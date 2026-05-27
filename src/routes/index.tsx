@@ -46,12 +46,8 @@ function Index() {
             borderBottom: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <a href="#top" className="flex items-center gap-2 font-semibold tracking-wider">
-            <span
-              className="inline-block h-5 w-5 rotate-45 rounded-[3px]"
-              style={{ background: "#cf391e" }}
-            />
-            <span className="text-sm">QI · STUDIO</span>
+          <a href="#top" className="text-xs tracking-[0.25em] text-white">
+            PROFILE BY SUSU.
           </a>
           <nav className="hidden gap-8 text-sm text-white/70 md:flex">
             {nav.map((n) => (
@@ -88,9 +84,6 @@ function Index() {
           <p className="text-xs tracking-[0.5em] text-white/40 uppercase">
             Brand · Visual · Type
           </p>
-          <h1 className="mt-3 text-3xl font-light tracking-widest text-white/90 md:text-5xl">
-            栖 · 设 计 工 作 室
-          </h1>
         </motion.div>
 
         <motion.div
