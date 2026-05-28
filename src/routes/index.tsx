@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import BrandSymbol3D from "@/components/BrandSymbol3D";
+import BrandSection from "@/components/BrandSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,13 +102,7 @@ function Index() {
         </motion.div>
       </section>
 
-      <Section
-        id="brand"
-        eyebrow="01 / Brand Identity"
-        title="品牌全案"
-        desc="从命名、视觉系统到落地应用，构建有记忆点的品牌语言。"
-        accent="#cf391e"
-      />
+      <BrandSection />
       <Section
         id="poster"
         eyebrow="02 / Poster"
