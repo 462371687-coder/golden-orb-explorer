@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 
 type ColorSwatch = { name: string; hex: string };
-type Item = { title: string; tag: string; gradient: string };
+type Item = { title: string; tag: string; img: string };
 
 type Project = {
   id: string;
@@ -25,7 +25,7 @@ type Project = {
   fonts: string;
   slogans: string[];
   sections: { title: string; items: Item[] }[];
-  cover: { bg: string; accent: string; sub: string };
+  cover: { bg: string; accent: string; sub: string; img: string };
 };
 
 const chicha: Project = {
@@ -57,37 +57,32 @@ const chicha: Project = {
     {
       title: "Logo & Identity",
       items: [
-        { title: "标准制图", tag: "LOGO", gradient: "linear-gradient(135deg,#cf391e,#422113)" },
-        { title: "色彩规范", tag: "COLOR", gradient: "linear-gradient(135deg,#f7b652,#fde2a7)" },
-        { title: "字体规范", tag: "TYPE", gradient: "linear-gradient(135deg,#422113,#9a9976)" },
+        { title: "标准制图", tag: "LOGO", img: "/portfolio/chicha-logo.jpg" },
+        { title: "色彩规范", tag: "COLOR", img: "/portfolio/chicha-colors.jpg" },
+        { title: "字体规范", tag: "TYPE", img: "/portfolio/chicha-typo.jpg" },
       ],
     },
     {
       title: "品牌海报",
       items: [
-        { title: "烟火", tag: "POSTER", gradient: "linear-gradient(135deg,#cf391e,#f7b652)" },
-        { title: "马锅头", tag: "POSTER", gradient: "linear-gradient(135deg,#422113,#cf391e)" },
-        { title: "清风谷", tag: "POSTER", gradient: "linear-gradient(135deg,#9a9976,#fde2a7)" },
-        { title: "白色运茶神", tag: "POSTER", gradient: "linear-gradient(135deg,#fff7d0,#9a9976)" },
-        { title: "马帮行囊", tag: "POSTER", gradient: "linear-gradient(135deg,#422113,#f7b652)" },
+        { title: "烟火 · 篝火", tag: "POSTER", img: "/portfolio/chicha-poster-1.jpg" },
+        { title: "马锅头", tag: "POSTER", img: "/portfolio/chicha-poster-2.jpg" },
+        { title: "栖于云滇", tag: "POSTER", img: "/portfolio/chicha-poster-3.jpg" },
+        { title: "海报组合", tag: "POSTER", img: "/portfolio/chicha-poster-grid.jpg" },
       ],
     },
     {
       title: "产品包装",
       items: [
-        { title: "滇红金针", tag: "PACKAGE", gradient: "linear-gradient(135deg,#cf391e,#422113)" },
-        { title: "勐库茶", tag: "PACKAGE", gradient: "linear-gradient(135deg,#9a9976,#422113)" },
-        { title: "墨江云针", tag: "PACKAGE", gradient: "linear-gradient(135deg,#fde2a7,#9a9976)" },
-        { title: "回龙茶", tag: "PACKAGE", gradient: "linear-gradient(135deg,#f7b652,#cf391e)" },
+        { title: "包装组合", tag: "PACKAGE", img: "/portfolio/chicha-package.jpg" },
+        { title: "纸袋 · 茶包", tag: "PACKAGE", img: "/portfolio/chicha-bag.jpg" },
       ],
     },
     {
       title: "应用延展",
       items: [
-        { title: "饮品杯设计", tag: "CUP", gradient: "linear-gradient(135deg,#fff7d0,#f7b652)" },
-        { title: "纸袋（大/小）", tag: "BAG", gradient: "linear-gradient(135deg,#fde2a7,#cf391e)" },
-        { title: "筷子套 · 小票", tag: "MERCH", gradient: "linear-gradient(135deg,#422113,#fde2a7)" },
-        { title: "场景陈列", tag: "SCENE", gradient: "linear-gradient(135deg,#9a9976,#422113)" },
+        { title: "饮品杯设计", tag: "CUP", img: "/portfolio/chicha-cup.jpg" },
+        { title: "门帘 · 场景", tag: "SCENE", img: "/portfolio/chicha-curtain.jpg" },
       ],
     },
   ],
@@ -95,6 +90,7 @@ const chicha: Project = {
     bg: "linear-gradient(135deg,#422113 0%,#cf391e 60%,#f7b652 100%)",
     accent: "#fde2a7",
     sub: "千年茶马 · 一盏栖身",
+    img: "/portfolio/chicha-hero.jpg",
   },
 };
 
@@ -128,34 +124,35 @@ const bello: Project = {
     {
       title: "Logo & Identity",
       items: [
-        { title: "圆形变体", tag: "LOGO", gradient: "linear-gradient(135deg,#3B86FF,#B6E9FE)" },
-        { title: "方形变体", tag: "LOGO", gradient: "linear-gradient(135deg,#FCE53D,#FFBFE0)" },
-        { title: "三角形变体", tag: "LOGO", gradient: "linear-gradient(135deg,#FF93B5,#BA7802)" },
+        { title: "标准制图", tag: "LOGO", img: "/portfolio/bello-logo.jpg" },
+        { title: "色彩规范", tag: "COLOR", img: "/portfolio/bello-colors.jpg" },
       ],
     },
     {
       title: "阶段化产品",
       items: [
-        { title: "B1 · 6M+ 初尝期", tag: "STAGE", gradient: "linear-gradient(135deg,#FFFBE7,#B6E9FE)" },
-        { title: "B2 · 9M+ 咀嚼期", tag: "STAGE", gradient: "linear-gradient(135deg,#B6E9FE,#FCE53D)" },
-        { title: "B3 · 12M+ 强化期", tag: "STAGE", gradient: "linear-gradient(135deg,#FCE53D,#FFBFE0)" },
-        { title: "B4 · 2y+ 正常饭期", tag: "STAGE", gradient: "linear-gradient(135deg,#FFBFE0,#3B86FF)" },
+        { title: "B1 · 6M+ 初尝期", tag: "STAGE", img: "/portfolio/bello-b1.jpg" },
+        { title: "B2 · 9M+ 咀嚼期", tag: "STAGE", img: "/portfolio/bello-b2.jpg" },
+        { title: "B3 · 12M+ 强化期", tag: "STAGE", img: "/portfolio/bello-b3.jpg" },
+        { title: "B4 · 2y+ 正常饭期", tag: "STAGE", img: "/portfolio/bello-b4.jpg" },
       ],
     },
     {
       title: "品牌摄影",
       items: [
-        { title: "新鲜食材", tag: "PHOTO", gradient: "linear-gradient(135deg,#FCE53D,#BA7802)" },
-        { title: "宝宝用餐场景", tag: "PHOTO", gradient: "linear-gradient(135deg,#FF93B5,#FFFBE7)" },
-        { title: "家庭时刻", tag: "PHOTO", gradient: "linear-gradient(135deg,#B6E9FE,#3B86FF)" },
+        { title: "宝宝时刻", tag: "PHOTO", img: "/portfolio/bello-baby.jpg" },
+        { title: "家庭用餐", tag: "PHOTO", img: "/portfolio/bello-scene.jpg" },
+        { title: "果蔬干脆罐", tag: "PHOTO", img: "/portfolio/bello-cans.jpg" },
+        { title: "果泥袋装", tag: "PHOTO", img: "/portfolio/bello-pouches.jpg" },
       ],
     },
     {
       title: "应用延展",
       items: [
-        { title: "训练筷 · 勺", tag: "TOOL", gradient: "linear-gradient(135deg,#E7E7E7,#3B86FF)" },
-        { title: "围兜设计", tag: "BIB", gradient: "linear-gradient(135deg,#FFBFE0,#FCE53D)" },
-        { title: "阶段菜单", tag: "MENU", gradient: "linear-gradient(135deg,#FFFBE7,#BA7802)" },
+        { title: "训练勺", tag: "TOOL", img: "/portfolio/bello-spoon.jpg" },
+        { title: "围兜设计", tag: "BIB", img: "/portfolio/bello-bib.jpg" },
+        { title: "阶段菜单", tag: "MENU", img: "/portfolio/bello-menu.jpg" },
+        { title: "小程序 UI", tag: "APP", img: "/portfolio/bello-app.jpg" },
       ],
     },
   ],
@@ -163,6 +160,7 @@ const bello: Project = {
     bg: "linear-gradient(135deg,#3B86FF 0%,#B6E9FE 55%,#FFFBE7 100%)",
     accent: "#FF93B5",
     sub: "每一口　都为宝宝量身定制",
+    img: "/portfolio/bello-hero.jpg",
   },
 };
 
@@ -240,7 +238,13 @@ function ProjectCard({
         className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
         style={{ background: project.cover.bg }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.25),transparent_60%)]" />
+        <img
+          src={project.cover.img}
+          alt={project.name}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
             <span className="text-xs tracking-[0.4em] text-white/80">
@@ -310,7 +314,13 @@ function ProjectDetail({ project }: { project: Project }) {
         className="relative aspect-[16/7] w-full overflow-hidden rounded-sm"
         style={{ background: project.cover.bg }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent_70%)]" />
+        <img
+          src={project.cover.img}
+          alt={project.name}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center">
           <span
             className="text-[18vw] font-light leading-none tracking-[0.1em] md:text-[10rem]"
@@ -386,11 +396,13 @@ function ProjectDetail({ project }: { project: Project }) {
                 key={it.title}
                 className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
               >
-                <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                  style={{ background: it.gradient }}
+                <img
+                  src={it.img}
+                  alt={it.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
                 <div className="absolute inset-0 flex flex-col justify-between p-4">
                   <span className="text-[10px] tracking-[0.3em] text-white/80">
                     {it.tag}
