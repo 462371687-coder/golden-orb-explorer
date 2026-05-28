@@ -238,7 +238,13 @@ function ProjectCard({
         className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
         style={{ background: project.cover.bg }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.25),transparent_60%)]" />
+        <img
+          src={project.cover.img}
+          alt={project.name}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
             <span className="text-xs tracking-[0.4em] text-white/80">
@@ -308,7 +314,13 @@ function ProjectDetail({ project }: { project: Project }) {
         className="relative aspect-[16/7] w-full overflow-hidden rounded-sm"
         style={{ background: project.cover.bg }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent_70%)]" />
+        <img
+          src={project.cover.img}
+          alt={project.name}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center">
           <span
             className="text-[18vw] font-light leading-none tracking-[0.1em] md:text-[10rem]"
@@ -384,11 +396,13 @@ function ProjectDetail({ project }: { project: Project }) {
                 key={it.title}
                 className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
               >
-                <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                  style={{ background: it.gradient }}
+                <img
+                  src={it.img}
+                  alt={it.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
                 <div className="absolute inset-0 flex flex-col justify-between p-4">
                   <span className="text-[10px] tracking-[0.3em] text-white/80">
                     {it.tag}
