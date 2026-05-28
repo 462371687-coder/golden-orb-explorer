@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import BrandSymbol3D from "@/components/BrandSymbol3D";
 import BrandSection from "@/components/BrandSection";
+import PosterSection from "@/components/PosterSection";
+import TypeSection from "@/components/TypeSection";
+import AboutSection from "@/components/AboutSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -103,27 +106,9 @@ function Index() {
       </section>
 
       <BrandSection />
-      <Section
-        id="poster"
-        eyebrow="02 / Poster"
-        title="海报设计"
-        desc="叙事性的视觉构成，让信息成为画面。"
-        accent="#f7b652"
-      />
-      <Section
-        id="type"
-        eyebrow="03 / Typography"
-        title="字体设计"
-        desc="字形即态度，从笔画结构到节奏的全流程定制。"
-        accent="#fde2a7"
-      />
-      <Section
-        id="about"
-        eyebrow="04 / About"
-        title="关于我"
-        desc="独立设计师，专注东方美学与现代视觉语言的融合表达。"
-        accent="#ffffff"
-      />
+      <PosterSection />
+      <TypeSection />
+      <AboutSection />
 
       <section
         id="contact"
@@ -136,23 +121,30 @@ function Index() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs tracking-[0.5em] text-white/40 uppercase">
-            05 / Contact
+            06 / Contact
           </p>
-          <h2 className="mt-4 text-4xl font-light tracking-widest md:text-6xl">
-            一 起 创 作
+          <h2 className="mt-4 text-4xl font-light tracking-widest md:text-7xl">
+            LET&apos;S CREATE TOGETHER
           </h2>
-          <p className="mt-6 text-sm tracking-[0.2em] text-white/60">
-            hello@qi-studio.cn · 微信 qi_design
-          </p>
+          <p className="mt-4 text-base tracking-[0.4em] text-white/60">合 作 联 系</p>
+          <div className="mt-12 flex flex-col items-center gap-4 text-sm tracking-[0.2em] text-white/70">
+            <a href="mailto:1469079249@QQ.COM" className="hover:text-white">
+              EMAIL · 1469079249@QQ.COM
+            </a>
+            <a href="tel:15710063937" className="hover:text-white">
+              PHONE · 157 1006 3937
+            </a>
+            <span className="text-white/50">WEB · 1469079249a00.COM</span>
+          </div>
           <a
-            href="mailto:hello@qi-studio.cn"
+            href="mailto:1469079249@QQ.COM"
             className="mt-10 inline-block rounded-full border border-white/20 px-8 py-3 text-sm tracking-[0.3em] backdrop-blur-md transition-colors hover:bg-white/10"
           >
             START A PROJECT
           </a>
         </motion.div>
         <p className="mt-20 text-xs tracking-[0.3em] text-white/30">
-          © 2026 QI STUDIO · ALL RIGHTS RESERVED
+          © 2026 郑苏妍 ZHENG SUYAN · ALL RIGHTS RESERVED
         </p>
       </section>
     </main>
