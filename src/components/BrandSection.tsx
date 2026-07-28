@@ -232,7 +232,7 @@ function ProjectCard({
   return (
     <button
       onClick={onOpen}
-      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden rounded-sm border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
+      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden  border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
     >
       <div
         className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
@@ -251,7 +251,7 @@ function ProjectCard({
               {project.code}
             </span>
             <span
-              className="rounded-full border px-3 py-1 text-[10px] tracking-[0.3em]"
+              className=" border px-3 py-1 text-[10px] tracking-[0.3em]"
               style={{
                 borderColor: project.cover.accent,
                 color: project.cover.accent,
@@ -311,7 +311,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
       {/* Hero cover */}
       <div
-        className="relative aspect-[16/7] w-full overflow-hidden rounded-sm"
+        className="relative aspect-[16/7] w-full overflow-hidden "
         style={{ background: project.cover.bg }}
       >
         <img
@@ -349,7 +349,7 @@ function ProjectDetail({ project }: { project: Project }) {
           {project.colors.map((c) => (
             <div key={c.hex} className="space-y-2">
               <div
-                className="aspect-square w-full rounded-sm border border-white/10"
+                className="aspect-square w-full  border border-white/10"
                 style={{ background: c.hex }}
               />
               <p className="text-xs tracking-[0.2em] text-white/80">
@@ -394,7 +394,7 @@ function ProjectDetail({ project }: { project: Project }) {
             {sec.items.map((it) => (
               <div
                 key={it.title}
-                className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
+                className="group relative aspect-[4/5] overflow-hidden  border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
               >
                 <img
                   src={it.img}

@@ -1,131 +1,96 @@
 import { motion } from "framer-motion";
 
 const awards = [
-  "校级一等、二等奖学金（2024、2025学年）",
-  "蓝桥杯大赛市级三等奖（2025）",
-  "全国高校 AIGC 数智建筑与文创产品设计大赛 二等奖（2025）",
-  "全国大学生科技美术创新大赛 市级三等奖（2024）",
+  "1ST & 2ND CLASS SCHOLARSHIP (2024, 2025)",
+  "LANQIAO CUP — MUNICIPAL 3RD PRIZE (2025)",
+  "NATIONAL AIGC DESIGN COMPETITION — 2ND PRIZE (2025)",
+  "NATIONAL SCI-ART INNOVATION — MUNICIPAL 3RD PRIZE (2024)",
 ];
 
 const courses = [
-  "版式设计",
-  "VI 设计",
-  "交互设计",
-  "界面 / 用户体验设计",
-  "包装设计",
-  "广告策划与设计",
+  "LAYOUT",
+  "VI DESIGN",
+  "INTERACTION",
+  "UI / UX",
+  "PACKAGING",
+  "ADVERTISING",
 ];
 
-const skills = ["AI", "PS", "AE", "C4D", "Figma"];
+const skills = ["AI", "PS", "AE", "C4D", "FIGMA"];
 
 const experience = [
-  "独立完成 Bello 与 栖茶 品牌全案设计",
-  "统筹团队完成文创产品 0→1 全流程设计",
-  "蓝桥杯「北京布老虎」非遗文创品牌打造 / 大创布老虎文创设计",
-  "外卖小程序 UI 设计",
-  "北京银行中秋 banner、员工手册封面设计",
+  "FULL BRAND IDENTITY FOR BELLO & CHICHA",
+  "LED TEAM ON 0→1 CULTURAL PRODUCT DESIGN",
+  "LANQIAO CUP — BEIJING CLOTH TIGER HERITAGE BRANDING",
+  "UI DESIGN FOR A FOOD DELIVERY MINI-PROGRAM",
+  "BANK OF BEIJING — MID-AUTUMN BANNER & HANDBOOK COVER",
 ];
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative mx-auto max-w-7xl px-6 py-32">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="text-xs tracking-[0.5em] uppercase text-white/70">04 / About</p>
-        <h2 className="mt-6 text-5xl font-light tracking-widest md:text-7xl">关 于 我</h2>
-      </motion.div>
+    <section id="about" className="border-t border-white/15 px-6 py-32 md:py-48">
+      <p className="text-center text-xs font-bold tracking-[0.5em] uppercase text-white/40">
+        ABOUT
+      </p>
+      <h2 className="mt-8 text-center text-[13vw] font-extrabold uppercase leading-[0.9] tracking-tight md:text-[8vw]">
+        ZHENG SUYAN
+      </h2>
 
-      <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-[2fr_3fr] md:gap-16">
-        {/* Left: avatar */}
+      <div className="mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-16 md:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="space-y-6"
+          className="border border-white/15 p-[1cm]"
         >
-          <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10">
-            <img
-              src="/portfolio/avatar.jpg"
-              alt="郑苏妍"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.3em] text-white/40 uppercase">Designer</p>
-            <h3 className="mt-2 text-3xl font-light tracking-widest">郑 苏 妍</h3>
-            <p className="mt-1 text-sm tracking-[0.25em] text-white/60">
-              ZHENG SUYAN · 品牌 / 视觉设计师
-            </p>
-          </div>
+          <img
+            src="/portfolio/avatar.jpg"
+            alt="ZHENG SUYAN"
+            className="h-full w-full object-cover"
+          />
         </motion.div>
 
-        {/* Right: details */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="space-y-10"
+          className="space-y-12"
         >
-          <Block title="教 育 EDUCATION">
-            <p className="text-white/80">本科 · 视觉传达设计</p>
-            <p className="text-white/50">2023.09 — 至今 · GPA 专业前 10%</p>
+          <Block title="NAME">
+            <p className="text-2xl font-extrabold uppercase tracking-widest">
+              ZHENG SUYAN · 郑苏妍
+            </p>
           </Block>
-
-          <Block title="奖 项 AWARDS">
+          <Block title="TITLE">
+            <p>BRAND & VISUAL DESIGNER</p>
+          </Block>
+          <Block title="EDUCATION">
+            <p>BA — VISUAL COMMUNICATION DESIGN</p>
+            <p className="text-white/50">2023.09 — PRESENT · GPA TOP 10%</p>
+          </Block>
+          <Block title="AWARDS">
             <ul className="space-y-2 text-white/70">
               {awards.map((a) => (
-                <li key={a} className="flex gap-3">
-                  <span className="mt-2 h-[2px] w-4 flex-shrink-0 bg-[#f7b652]" />
-                  <span>{a}</span>
-                </li>
+                <li key={a}>{a}</li>
               ))}
             </ul>
           </Block>
-
-          <Block title="主 修 课 程 COURSES">
-            <div className="flex flex-wrap gap-2">
-              {courses.map((c) => (
-                <span
-                  key={c}
-                  className="rounded-full border border-white/15 px-4 py-1.5 text-xs tracking-widest text-white/70"
-                >
-                  {c}
-                </span>
-              ))}
-            </div>
+          <Block title="COURSES">
+            <p className="text-white/70">{courses.join(" / ")}</p>
           </Block>
-
-          <Block title="技 能 SKILLS">
-            <div className="flex flex-wrap gap-3">
-              {skills.map((s) => (
-                <span
-                  key={s}
-                  className="rounded-sm bg-white/5 px-4 py-2 text-sm tracking-[0.25em] text-white"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+          <Block title="SKILLS">
+            <p className="text-xl font-extrabold tracking-[0.3em]">
+              {skills.join(" · ")}
+            </p>
           </Block>
-
-          <Block title="实 践 经 历 EXPERIENCE">
-            <ol className="space-y-3 text-white/70">
-              {experience.map((e, i) => (
-                <li key={e} className="flex gap-4">
-                  <span className="text-xs tracking-[0.2em] text-[#f7b652]">
-                    0{i + 1}
-                  </span>
-                  <span>{e}</span>
-                </li>
+          <Block title="EXPERIENCE">
+            <ul className="space-y-2 text-white/70">
+              {experience.map((e) => (
+                <li key={e}>{e}</li>
               ))}
-            </ol>
+            </ul>
           </Block>
         </motion.div>
       </div>
@@ -135,9 +100,13 @@ export default function AboutSection() {
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div>
-      <p className="mb-4 text-xs tracking-[0.4em] text-white/40 uppercase">{title}</p>
-      <div className="text-sm leading-relaxed tracking-wider">{children}</div>
+    <div className="border-t border-white/15 pt-6">
+      <p className="mb-4 text-[10px] font-bold tracking-[0.5em] uppercase text-white/40">
+        {title}
+      </p>
+      <div className="text-sm uppercase leading-relaxed tracking-[0.15em]">
+        {children}
+      </div>
     </div>
   );
 }

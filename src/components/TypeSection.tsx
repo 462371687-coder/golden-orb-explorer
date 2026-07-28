@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const types = [
   { src: "/portfolio/type-buddhism.jpg", word: "禅", en: "BUDDHISM" },
@@ -19,49 +20,95 @@ const types = [
 ];
 
 export default function TypeSection() {
-  return (
-    <section id="type" className="relative mx-auto max-w-7xl px-6 py-32">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="text-xs tracking-[0.5em] uppercase" style={{ color: "#fde2a7" }}>
-          03 / Typography
-        </p>
-        <h2 className="mt-6 text-5xl font-light tracking-widest md:text-7xl">字体设计</h2>
-        <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60">
-          字形即态度 — 从笔画结构到节奏的全流程定制。
-        </p>
-      </motion.div>
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
 
-      <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-        {types.map((t, i) => (
+  const go = (dir: number) =>
+    setIndex((i) => (i + dir + types.length) % types.length);
+
+  return (
+    <section id="type" className="border-t border-white/15 px-6 py-32 md:py-48">
+      <p className="text-center text-xs font-bold tracking-[0.5em] uppercase text-white/40">
+        03 / TYPE
+      </p>
+
+      {/* Entry */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8 }}
+        onClick={() => setOpen((v) => !v)}
+        className="mx-auto mt-10 block text-center text-[13vw] font-extrabold uppercase leading-[0.9] tracking-tight text-white transition-colors duration-300 hover:text-[#f7b652] md:text-[9vw]"
+      >
+        #TYPE COMBINATION
+      </motion.button>
+      <p className="mt-8 text-center text-xs font-bold tracking-[0.4em] uppercase text-white/40">
+        {open ? "CLICK TO CLOSE" : "CLICK TO ENTER"}
+      </p>
+
+      <AnimatePresence initial={false}>
+        {open && (
           <motion.div
-            key={t.src}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: (i % 5) * 0.06 }}
-            className="group relative aspect-square overflow-hidden rounded-sm border border-white/10 bg-white/5 transition-all hover:border-white/40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-20 overflow-hidden"
           >
-            <img
-              src={t.src}
-              alt={t.word}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-            <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
-              <span className="text-2xl font-light tracking-widest text-white drop-shadow-lg">
-                {t.word}
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-white/60">{t.en}</span>
+            {/* Horizontal slider */}
+            <div className="relative flex items-center justify-center gap-6 md:gap-10">
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const i = (index + offset + types.length) % types.length;
+                const t = types[i];
+                const abs = Math.abs(offset);
+                return (
+                  <motion.button
+                    key={offset}
+                    onClick={() => (offset === 0 ? null : go(offset))}
+                    animate={{
+                      scale: abs === 0 ? 1 : abs === 1 ? 0.72 : 0.5,
+                      opacity: abs === 0 ? 1 : abs === 1 ? 0.45 : 0.18,
+                    }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className={`relative aspect-square w-[46vw] shrink-0 md:w-[26vw] ${
+                      abs > 1 ? "hidden md:block" : ""
+                    }`}
+                  >
+                    <img
+                      src={t.src}
+                      alt={t.en}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.button>
+                );
+              })}
             </div>
+
+            <div className="mt-10 flex items-center justify-center gap-10">
+              <button
+                onClick={() => go(-1)}
+                className="text-xs font-bold tracking-[0.4em] uppercase text-white/50 transition-colors hover:text-white"
+              >
+                PREV
+              </button>
+              <p className="text-xl font-extrabold uppercase tracking-[0.3em] text-white">
+                {types[index].en}
+              </p>
+              <button
+                onClick={() => go(1)}
+                className="text-xs font-bold tracking-[0.4em] uppercase text-white/50 transition-colors hover:text-white"
+              >
+                NEXT
+              </button>
+            </div>
+            <p className="mt-4 text-center text-sm tracking-[0.5em] text-white/50">
+              {types[index].word}
+            </p>
           </motion.div>
-        ))}
-      </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

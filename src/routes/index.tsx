@@ -9,100 +9,72 @@ import AboutSection from "@/components/AboutSection";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "栖茶 · 品牌与视觉设计师" },
+      { title: "ZHENG SUYAN — BRAND & VISUAL DESIGNER" },
       {
         name: "description",
         content:
-          "栖茶 — 品牌全案 · 海报设计 · 字体设计。拖拽旋转探索 3D 品牌符号。",
+          "Portfolio of ZHENG SUYAN — brand identity, poster and typography design. Drag the 3D symbol to explore.",
       },
-      { property: "og:title", content: "栖茶 · 品牌与视觉设计师" },
+      { property: "og:title", content: "ZHENG SUYAN — BRAND & VISUAL DESIGNER" },
       {
         property: "og:description",
-        content: "品牌全案 · 海报 · 字体 · 视觉设计作品集。",
+        content: "BRAND / POSTER / TYPE — a minimal black-and-white design portfolio.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
 });
 
+const nav = [
+  { id: "work", label: "WORK" },
+  { id: "about", label: "ABOUT" },
+  { id: "contact", label: "CONTACT" },
+];
+
 function Index() {
-  const nav = [
-    { id: "brand", label: "品牌全案" },
-    { id: "poster", label: "海报设计" },
-    { id: "type", label: "字体设计" },
-    { id: "about", label: "关于我" },
-  ];
-
   return (
-    <main
-      className="relative min-h-screen w-full text-white"
-      style={{
-        background:
-          "radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%)",
-      }}
-    >
-      {/* Glassmorphism navbar */}
-      <header className="fixed top-0 inset-x-0 z-50">
-        <div
-          className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 backdrop-blur-xl"
-          style={{
-            background: "rgba(255,255,255,0.05)",
-            borderBottom: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          <a href="#top" className="text-xs tracking-[0.25em] text-white">
-            PROFILE BY SUSU.
-          </a>
-          <nav className="hidden gap-8 text-sm text-white/70 md:flex">
-            {nav.map((n) => (
-              <a
-                key={n.id}
-                href={`#${n.id}`}
-                className="transition-colors hover:text-white"
-              >
-                {n.label}
-              </a>
-            ))}
-            <a href="#contact" className="transition-colors hover:text-white">
-              联系
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero with 3D */}
-      <section
-        id="top"
-        className="relative flex h-screen w-full flex-col items-center justify-center"
-      >
-        <div className="absolute inset-0">
+    <main className="relative min-h-screen w-full bg-black pb-24 text-white">
+      {/* HERO */}
+      <section id="top" className="relative h-screen w-full">
+        <div className="absolute inset-0 bg-black">
           <BrandSymbol3D />
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="pointer-events-none absolute left-0 right-0 top-24 px-6 text-center"
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="pointer-events-none absolute inset-x-0 top-10 text-center text-xs font-bold uppercase tracking-[0.6em]"
         >
-          <p className="text-xs tracking-[0.5em] text-white/40 uppercase">
-            Brand · Visual · Type
-          </p>
-        </motion.div>
+          ZHENG SUYAN
+        </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="pointer-events-none absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-center"
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="pointer-events-none absolute inset-x-0 bottom-32 text-center text-xs font-bold uppercase tracking-[0.6em] text-white/60"
         >
-          <p className="text-xs tracking-[0.4em] text-white/50 uppercase">
-            DRAG · SCROLL · EXPLORE
-          </p>
-          <p className="text-sm tracking-[0.3em] text-white/70">
-            品牌与视觉设计师 · 拖拽旋转探索
-          </p>
-        </motion.div>
+          DRAG TO ROTATE
+        </motion.p>
+      </section>
+
+      {/* WORK */}
+      <section id="work" className="border-t border-white/15 px-6 py-32 md:py-48">
+        <p className="text-center text-xs font-bold tracking-[0.5em] uppercase text-white/40">
+          01 / BRAND
+        </p>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8 }}
+          className="mt-8 text-center text-[13vw] font-extrabold uppercase leading-[0.9] tracking-tight md:text-[8vw]"
+        >
+          WORK
+        </motion.h2>
       </section>
 
       <BrandSection />
@@ -110,110 +82,56 @@ function Index() {
       <TypeSection />
       <AboutSection />
 
+      {/* CONTACT */}
       <section
         id="contact"
-        className="flex flex-col items-center justify-center gap-6 px-6 py-32 text-center"
+        className="border-t border-white/15 px-6 py-32 text-center md:py-48"
       >
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8 }}
         >
-          <p className="text-xs tracking-[0.5em] text-white/40 uppercase">
-            06 / Contact
-          </p>
-          <h2 className="mt-4 text-4xl font-light tracking-widest md:text-7xl">
-            LET&apos;S CREATE TOGETHER
+          <h2 className="text-[12vw] font-extrabold uppercase leading-[0.9] tracking-tight md:text-[8vw]">
+            LET&apos;S WORK
+            <br />
+            TOGETHER
           </h2>
-          <p className="mt-4 text-base tracking-[0.4em] text-white/60">合 作 联 系</p>
-          <div className="mt-12 flex flex-col items-center gap-4 text-sm tracking-[0.2em] text-white/70">
-            <a href="mailto:1469079249@QQ.COM" className="hover:text-white">
-              EMAIL · 1469079249@QQ.COM
+
+          <div className="mt-20 flex flex-col items-center gap-6 text-sm font-bold uppercase tracking-[0.35em]">
+            <a
+              href="mailto:1469079249@QQ.COM"
+              className="px-3 py-1 transition-colors duration-200 hover:bg-white hover:text-black"
+            >
+              1469079249@QQ.COM
             </a>
-            <a href="tel:15710063937" className="hover:text-white">
-              PHONE · 157 1006 3937
+            <a
+              href="tel:15710063937"
+              className="px-3 py-1 transition-colors duration-200 hover:bg-white hover:text-black"
+            >
+              15710063937
             </a>
-            <span className="text-white/50">WEB · 1469079249a00.COM</span>
           </div>
-          <a
-            href="mailto:1469079249@QQ.COM"
-            className="mt-10 inline-block rounded-full border border-white/20 px-8 py-3 text-sm tracking-[0.3em] backdrop-blur-md transition-colors hover:bg-white/10"
-          >
-            START A PROJECT
-          </a>
+
+          <p className="mt-24 text-[10px] font-bold uppercase tracking-[0.4em] text-white/40">
+            © 2026 ZHENG SUYAN
+          </p>
         </motion.div>
-        <p className="mt-20 text-xs tracking-[0.3em] text-white/30">
-          © 2026 郑苏妍 ZHENG SUYAN · ALL RIGHTS RESERVED
-        </p>
       </section>
-    </main>
-  );
-}
 
-function Section({
-  id,
-  eyebrow,
-  title,
-  desc,
-  accent,
-}: {
-  id: string;
-  eyebrow: string;
-  title: string;
-  desc: string;
-  accent: string;
-}) {
-  return (
-    <section
-      id={id}
-      className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-24"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <p
-          className="text-xs tracking-[0.5em] uppercase"
-          style={{ color: accent }}
-        >
-          {eyebrow}
-        </p>
-        <h2 className="mt-6 text-5xl font-light tracking-widest md:text-7xl">
-          {title}
-        </h2>
-        <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60 md:text-lg">
-          {desc}
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-        className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3"
-      >
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:border-white/30"
+      {/* BOTTOM FIXED NAV */}
+      <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-white/20 bg-black">
+        {nav.map((n) => (
+          <a
+            key={n.id}
+            href={`#${n.id}`}
+            className="border-r border-white/20 py-5 text-center text-base font-extrabold uppercase tracking-[0.3em] text-white transition-colors duration-200 last:border-r-0 hover:bg-white hover:text-black md:text-2xl"
           >
-            <div
-              className="absolute inset-0 opacity-30 transition-opacity group-hover:opacity-60"
-              style={{
-                background: `linear-gradient(135deg, ${accent}22, transparent 60%)`,
-              }}
-            />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs tracking-[0.2em] text-white/70">
-              <span>WORK · 0{i}</span>
-              <span>2026</span>
-            </div>
-          </div>
+            {n.label}
+          </a>
         ))}
-      </motion.div>
-    </section>
+      </nav>
+    </main>
   );
 }

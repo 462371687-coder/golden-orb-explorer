@@ -139,8 +139,12 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
+    background-color: #000000;
     color: var(--color-foreground);
     font-family: "Montserrat", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   }
