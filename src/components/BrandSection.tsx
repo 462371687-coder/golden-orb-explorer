@@ -175,34 +175,31 @@ export default function BrandSection() {
       className="relative mx-auto max-w-7xl px-6 py-32"
     >
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex items-end justify-between gap-8"
       >
         <div>
-          <p
-            className="text-xs uppercase tracking-[0.5em]"
-            style={{ color: "#cf391e" }}
-          >
-            01 / Brand Identity
+          <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/40">
+            01 / BRAND IDENTITY
           </p>
-          <h2 className="mt-6 text-5xl font-light tracking-widest md:text-7xl">
-            品牌全案
+          <h2 className="mt-6 text-[12vw] font-extrabold uppercase leading-[0.9] tracking-tight md:text-[6vw]">
+            BRAND DESIGN
           </h2>
-          <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60 md:text-lg">
-            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。横向滑动浏览，点击卡片进入项目全貌。
+          <p className="mt-8 max-w-xl text-xs uppercase leading-relaxed tracking-[0.25em] text-white/50">
+            FULL BRAND SYSTEMS — NAMING, IDENTITY, PACKAGING, APPLICATION.
           </p>
         </div>
-        <p className="hidden text-xs tracking-[0.4em] text-white/40 md:block">
+        <p className="hidden text-xs font-bold tracking-[0.4em] text-white/40 md:block">
           ← SCROLL →
         </p>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
         className="mt-16 flex snap-x snap-mandatory gap-8 overflow-x-auto pb-8"
@@ -214,7 +211,7 @@ export default function BrandSection() {
       </motion.div>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto border-white/10 bg-[#0a0a0a] text-white">
+        <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto rounded-none border-white/15 bg-black text-white">
           {active && <ProjectDetail project={active} />}
         </DialogContent>
       </Dialog>
@@ -232,60 +229,52 @@ function ProjectCard({
   return (
     <button
       onClick={onOpen}
-      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden  border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
+      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden border border-white/15 text-left transition-colors duration-300 hover:border-white md:w-[640px]"
     >
       <div
-        className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
-        style={{ background: project.cover.bg }}
+        className="relative aspect-[4/5] w-full overflow-hidden bg-black"
       >
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
-            <span className="text-xs tracking-[0.4em] text-white/80">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-white/80">
               {project.code}
             </span>
             <span
-              className=" border px-3 py-1 text-[10px] tracking-[0.3em]"
-              style={{
-                borderColor: project.cover.accent,
-                color: project.cover.accent,
-              }}
+              className="border border-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-white"
             >
               VIEW CASE →
             </span>
           </div>
           <div>
-            <p
-              className="text-xs tracking-[0.5em]"
-              style={{ color: project.cover.accent }}
-            >
+            <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/70">
               {project.nameEn}
             </p>
-            <h3 className="mt-3 text-6xl font-light tracking-[0.2em] text-white md:text-7xl">
-              {project.name}
+            <h3 className="mt-3 text-6xl font-extrabold uppercase tracking-tight text-white md:text-7xl">
+              {project.nameEn}
             </h3>
-            <p className="mt-4 text-sm tracking-[0.3em] text-white/80">
-              {project.cover.sub}
+            <p className="mt-4 text-sm tracking-[0.3em] text-white/70">
+              {project.name}
             </p>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between bg-white/5 px-6 py-5 backdrop-blur-sm">
+      <div className="flex items-center justify-between border-t border-white/15 px-6 py-5">
         <div>
-          <p className="text-sm tracking-[0.2em] text-white/80">
+          <p className="text-sm tracking-[0.2em] text-white/70">
             {project.tagline}
           </p>
           <p className="mt-1 text-xs tracking-[0.3em] text-white/40">
             {project.keywords.join("　")}
           </p>
         </div>
-        <span className="text-xs tracking-[0.3em] text-white/40">2026</span>
+        <span className="text-xs font-bold tracking-[0.3em] text-white/40">2026</span>
       </div>
     </button>
   );
@@ -295,37 +284,28 @@ function ProjectDetail({ project }: { project: Project }) {
   return (
     <div className="space-y-12">
       <DialogHeader className="space-y-4 text-left">
-        <p
-          className="text-xs uppercase tracking-[0.5em]"
-          style={{ color: project.cover.accent }}
-        >
+        <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/40">
           {project.code} · {project.nameEn}
         </p>
-        <DialogTitle className="text-5xl font-light tracking-[0.2em] text-white md:text-6xl">
-          {project.name}
+        <DialogTitle className="text-5xl font-extrabold uppercase tracking-tight text-white md:text-6xl">
+          {project.nameEn}
         </DialogTitle>
         <DialogDescription className="text-sm tracking-[0.2em] text-white/60">
-          {project.tagline}
+          {project.name} · {project.tagline}
         </DialogDescription>
       </DialogHeader>
 
       {/* Hero cover */}
-      <div
-        className="relative aspect-[16/7] w-full overflow-hidden "
-        style={{ background: project.cover.bg }}
-      >
+      <div className="relative aspect-[16/7] w-full overflow-hidden bg-black">
         <img
           src={project.cover.img}
           alt={project.name}
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="text-[18vw] font-light leading-none tracking-[0.1em] md:text-[10rem]"
-            style={{ color: project.cover.accent, opacity: 0.9 }}
-          >
+          <span className="text-[18vw] font-extrabold uppercase leading-none tracking-tight text-white md:text-[10rem]">
             {project.nameEn}
           </span>
         </div>
@@ -349,7 +329,7 @@ function ProjectDetail({ project }: { project: Project }) {
           {project.colors.map((c) => (
             <div key={c.hex} className="space-y-2">
               <div
-                className="aspect-square w-full  border border-white/10"
+                className="aspect-square w-full border border-white/15"
                 style={{ background: c.hex }}
               />
               <p className="text-xs tracking-[0.2em] text-white/80">
@@ -394,17 +374,17 @@ function ProjectDetail({ project }: { project: Project }) {
             {sec.items.map((it) => (
               <div
                 key={it.title}
-                className="group relative aspect-[4/5] overflow-hidden  border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
+                className="group relative aspect-[4/5] overflow-hidden border border-white/15 transition-colors duration-300 hover:border-white"
               >
                 <img
                   src={it.img}
                   alt={it.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
+                <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex flex-col justify-between p-4">
-                  <span className="text-[10px] tracking-[0.3em] text-white/80">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">
                     {it.tag}
                   </span>
                   <span className="text-sm tracking-[0.2em] text-white">
