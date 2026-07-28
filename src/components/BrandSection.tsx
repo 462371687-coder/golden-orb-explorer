@@ -329,7 +329,7 @@ function ProjectDetail({ project }: { project: Project }) {
           {project.colors.map((c) => (
             <div key={c.hex} className="space-y-2">
               <div
-                className="aspect-square w-full  border border-white/10"
+                className="aspect-square w-full border border-white/15"
                 style={{ background: c.hex }}
               />
               <p className="text-xs tracking-[0.2em] text-white/80">
@@ -374,17 +374,17 @@ function ProjectDetail({ project }: { project: Project }) {
             {sec.items.map((it) => (
               <div
                 key={it.title}
-                className="group relative aspect-[4/5] overflow-hidden  border border-white/10 transition-all duration-500 hover:scale-[1.05] hover:border-white/30 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
+                className="group relative aspect-[4/5] overflow-hidden border border-white/15 transition-colors duration-300 hover:border-white"
               >
                 <img
                   src={it.img}
                   alt={it.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
+                <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex flex-col justify-between p-4">
-                  <span className="text-[10px] tracking-[0.3em] text-white/80">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">
                     {it.tag}
                   </span>
                   <span className="text-sm tracking-[0.2em] text-white">
