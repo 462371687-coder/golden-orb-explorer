@@ -284,37 +284,28 @@ function ProjectDetail({ project }: { project: Project }) {
   return (
     <div className="space-y-12">
       <DialogHeader className="space-y-4 text-left">
-        <p
-          className="text-xs uppercase tracking-[0.5em]"
-          style={{ color: project.cover.accent }}
-        >
+        <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/40">
           {project.code} · {project.nameEn}
         </p>
-        <DialogTitle className="text-5xl font-light tracking-[0.2em] text-white md:text-6xl">
-          {project.name}
+        <DialogTitle className="text-5xl font-extrabold uppercase tracking-tight text-white md:text-6xl">
+          {project.nameEn}
         </DialogTitle>
         <DialogDescription className="text-sm tracking-[0.2em] text-white/60">
-          {project.tagline}
+          {project.name} · {project.tagline}
         </DialogDescription>
       </DialogHeader>
 
       {/* Hero cover */}
-      <div
-        className="relative aspect-[16/7] w-full overflow-hidden "
-        style={{ background: project.cover.bg }}
-      >
+      <div className="relative aspect-[16/7] w-full overflow-hidden bg-black">
         <img
           src={project.cover.img}
           alt={project.name}
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="text-[18vw] font-light leading-none tracking-[0.1em] md:text-[10rem]"
-            style={{ color: project.cover.accent, opacity: 0.9 }}
-          >
+          <span className="text-[18vw] font-extrabold uppercase leading-none tracking-tight text-white md:text-[10rem]">
             {project.nameEn}
           </span>
         </div>
