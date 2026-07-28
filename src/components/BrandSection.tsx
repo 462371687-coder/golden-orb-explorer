@@ -229,60 +229,52 @@ function ProjectCard({
   return (
     <button
       onClick={onOpen}
-      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden  border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
+      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden border border-white/15 text-left transition-colors duration-300 hover:border-white md:w-[640px]"
     >
       <div
-        className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
-        style={{ background: project.cover.bg }}
+        className="relative aspect-[4/5] w-full overflow-hidden bg-black"
       >
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
-            <span className="text-xs tracking-[0.4em] text-white/80">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-white/80">
               {project.code}
             </span>
             <span
-              className=" border px-3 py-1 text-[10px] tracking-[0.3em]"
-              style={{
-                borderColor: project.cover.accent,
-                color: project.cover.accent,
-              }}
+              className="border border-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-white"
             >
               VIEW CASE →
             </span>
           </div>
           <div>
-            <p
-              className="text-xs tracking-[0.5em]"
-              style={{ color: project.cover.accent }}
-            >
+            <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/70">
               {project.nameEn}
             </p>
-            <h3 className="mt-3 text-6xl font-light tracking-[0.2em] text-white md:text-7xl">
-              {project.name}
+            <h3 className="mt-3 text-6xl font-extrabold uppercase tracking-tight text-white md:text-7xl">
+              {project.nameEn}
             </h3>
-            <p className="mt-4 text-sm tracking-[0.3em] text-white/80">
-              {project.cover.sub}
+            <p className="mt-4 text-sm tracking-[0.3em] text-white/70">
+              {project.name}
             </p>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between bg-white/5 px-6 py-5 backdrop-blur-sm">
+      <div className="flex items-center justify-between border-t border-white/15 px-6 py-5">
         <div>
-          <p className="text-sm tracking-[0.2em] text-white/80">
+          <p className="text-sm tracking-[0.2em] text-white/70">
             {project.tagline}
           </p>
           <p className="mt-1 text-xs tracking-[0.3em] text-white/40">
             {project.keywords.join("　")}
           </p>
         </div>
-        <span className="text-xs tracking-[0.3em] text-white/40">2026</span>
+        <span className="text-xs font-bold tracking-[0.3em] text-white/40">2026</span>
       </div>
     </button>
   );
