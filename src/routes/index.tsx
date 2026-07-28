@@ -45,6 +45,15 @@ function Index() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="pointer-events-none absolute inset-x-0 top-10 text-center text-xs font-bold uppercase tracking-[0.6em]"
+        >
+          ZHENG SUYAN
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
           className="pointer-events-none absolute inset-x-0 bottom-32 text-center text-xs font-bold uppercase tracking-[0.6em] text-white/60"
         >
