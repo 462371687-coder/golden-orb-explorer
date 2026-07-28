@@ -175,34 +175,31 @@ export default function BrandSection() {
       className="relative mx-auto max-w-7xl px-6 py-32"
     >
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex items-end justify-between gap-8"
       >
         <div>
-          <p
-            className="text-xs uppercase tracking-[0.5em]"
-            style={{ color: "#cf391e" }}
-          >
-            01 / Brand Identity
+          <p className="text-xs font-bold uppercase tracking-[0.5em] text-white/40">
+            01 / BRAND IDENTITY
           </p>
-          <h2 className="mt-6 text-5xl font-light tracking-widest md:text-7xl">
-            品牌全案
+          <h2 className="mt-6 text-[12vw] font-extrabold uppercase leading-[0.9] tracking-tight md:text-[6vw]">
+            BRAND DESIGN
           </h2>
-          <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60 md:text-lg">
-            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。横向滑动浏览，点击卡片进入项目全貌。
+          <p className="mt-8 max-w-xl text-xs uppercase leading-relaxed tracking-[0.25em] text-white/50">
+            FULL BRAND SYSTEMS — NAMING, IDENTITY, PACKAGING, APPLICATION.
           </p>
         </div>
-        <p className="hidden text-xs tracking-[0.4em] text-white/40 md:block">
+        <p className="hidden text-xs font-bold tracking-[0.4em] text-white/40 md:block">
           ← SCROLL →
         </p>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
         className="mt-16 flex snap-x snap-mandatory gap-8 overflow-x-auto pb-8"
@@ -214,7 +211,7 @@ export default function BrandSection() {
       </motion.div>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto border-white/10 bg-[#0a0a0a] text-white">
+        <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto rounded-none border-white/15 bg-black text-white">
           {active && <ProjectDetail project={active} />}
         </DialogContent>
       </Dialog>
