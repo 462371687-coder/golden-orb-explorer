@@ -233,19 +233,19 @@ function ProjectCard({
   return (
     <button
       onClick={onOpen}
-      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden  border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
+      className="group relative w-full overflow-hidden border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
     >
       <div
-        className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
+        className="relative aspect-[16/10] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.03]"
         style={{ background: project.cover.bg }}
       >
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
             <span className="text-xs tracking-[0.4em] text-white/80">
@@ -268,11 +268,11 @@ function ProjectCard({
             >
               {project.nameEn}
             </p>
-            <h3 className="mt-3 text-6xl font-light tracking-[0.2em] text-white md:text-7xl">
+            <h3 className="mt-3 text-5xl font-light tracking-[0.2em] text-white md:text-6xl">
               {project.name}
             </h3>
-            <p className="mt-4 text-sm tracking-[0.3em] text-white/80">
-              {project.cover.sub}
+            <p className="mt-3 max-w-md text-sm leading-relaxed tracking-[0.2em] text-white/80">
+              {project.tagline}
             </p>
           </div>
         </div>
