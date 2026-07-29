@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import chichaCover from "@/assets/chicha-cover.png.asset.json";
+import belloCover from "@/assets/bello-cover.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -90,7 +92,7 @@ const chicha: Project = {
     bg: "linear-gradient(135deg,#422113 0%,#cf391e 60%,#f7b652 100%)",
     accent: "#fde2a7",
     sub: "千年茶马 · 一盏栖身",
-    img: "/portfolio/chicha-hero.jpg",
+    img: chichaCover.url,
   },
 };
 
@@ -160,7 +162,7 @@ const bello: Project = {
     bg: "linear-gradient(135deg,#3B86FF 0%,#B6E9FE 55%,#FFFBE7 100%)",
     accent: "#FF93B5",
     sub: "每一口　都为宝宝量身定制",
-    img: "/portfolio/bello-hero.jpg",
+    img: belloCover.url,
   },
 };
 
