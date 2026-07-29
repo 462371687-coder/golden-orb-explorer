@@ -2,6 +2,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import chichaCover from "@/assets/chicha-cover.png.asset.json";
 import belloCover from "@/assets/bello-cover.png.asset.json";
+import g1 from "@/assets/chicha/cover._jpg.jpg.asset.json";
+import g2 from "@/assets/chicha/01._jpg.jpg.asset.json";
+import g3 from "@/assets/chicha/02.jpg.jpg.asset.json";
+import g4 from "@/assets/chicha/03.jpg.jpg.asset.json";
+import g5 from "@/assets/chicha/04.jpg.jpg.asset.json";
+import g6 from "@/assets/chicha/05.jpg.png.asset.json";
+import g7 from "@/assets/chicha/06.jpg.jpg.asset.json";
+import g8 from "@/assets/chicha/07.jpg.jpg.asset.json";
+import g9 from "@/assets/chicha/08.jpg.jpg.asset.json";
+import g10 from "@/assets/chicha/image-6.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -27,6 +37,7 @@ type Project = {
   fonts: string;
   slogans: string[];
   sections: { title: string; items: Item[] }[];
+  gallery?: { src: string; alt: string }[];
   cover: { bg: string; accent: string; sub: string; img: string };
 };
 
@@ -55,38 +66,18 @@ const chicha: Project = {
     "栖，是古道上的休憩；茶，是千年路上的回甘。",
     "古道有驿站　喝茶即靠岸。",
   ],
-  sections: [
-    {
-      title: "Logo & Identity",
-      items: [
-        { title: "标准制图", tag: "LOGO", img: "/portfolio/chicha-logo.jpg" },
-        { title: "色彩规范", tag: "COLOR", img: "/portfolio/chicha-colors.jpg" },
-        { title: "字体规范", tag: "TYPE", img: "/portfolio/chicha-typo.jpg" },
-      ],
-    },
-    {
-      title: "品牌海报",
-      items: [
-        { title: "烟火 · 篝火", tag: "POSTER", img: "/portfolio/chicha-poster-1.jpg" },
-        { title: "马锅头", tag: "POSTER", img: "/portfolio/chicha-poster-2.jpg" },
-        { title: "栖于云滇", tag: "POSTER", img: "/portfolio/chicha-poster-3.jpg" },
-        { title: "海报组合", tag: "POSTER", img: "/portfolio/chicha-poster-grid.jpg" },
-      ],
-    },
-    {
-      title: "产品包装",
-      items: [
-        { title: "包装组合", tag: "PACKAGE", img: "/portfolio/chicha-package.jpg" },
-        { title: "纸袋 · 茶包", tag: "PACKAGE", img: "/portfolio/chicha-bag.jpg" },
-      ],
-    },
-    {
-      title: "应用延展",
-      items: [
-        { title: "饮品杯设计", tag: "CUP", img: "/portfolio/chicha-cup.jpg" },
-        { title: "门帘 · 场景", tag: "SCENE", img: "/portfolio/chicha-curtain.jpg" },
-      ],
-    },
+  sections: [],
+  gallery: [
+    { src: g1.url, alt: "栖茶 品牌封面 · 云南茶山" },
+    { src: g2.url, alt: "栖茶 品牌 INTRO" },
+    { src: g3.url, alt: "栖茶 品牌价值图" },
+    { src: g4.url, alt: "栖茶 Logo 标准制图 · 色彩规范 · 字体规范" },
+    { src: g5.url, alt: "栖茶 品牌社交卡片" },
+    { src: g6.url, alt: "栖茶 品牌产品组合" },
+    { src: g7.url, alt: "栖茶 品牌情绪页" },
+    { src: g8.url, alt: "栖茶 海报系列" },
+    { src: g9.url, alt: "栖茶 产品包装 · 纸袋茶包" },
+    { src: g10.url, alt: "栖茶 门帘场景延展" },
   ],
   cover: {
     bg: "linear-gradient(135deg,#422113 0%,#cf391e 60%,#f7b652 100%)",
