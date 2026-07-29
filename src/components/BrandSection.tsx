@@ -194,11 +194,11 @@ export default function BrandSection() {
             品牌全案
           </h2>
           <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60 md:text-lg">
-            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。横向滑动浏览，点击卡片进入项目全貌。
+            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。点击卡片进入项目全貌。
           </p>
         </div>
         <p className="hidden text-xs tracking-[0.4em] text-white/40 md:block">
-          ← SCROLL →
+          02 PROJECTS
         </p>
       </motion.div>
 
@@ -207,8 +207,7 @@ export default function BrandSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-        className="mt-16 flex snap-x snap-mandatory gap-8 overflow-x-auto pb-8"
-        style={{ scrollbarWidth: "thin" }}
+        className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2"
       >
         {projects.map((p) => (
           <ProjectCard key={p.id} project={p} onOpen={() => setActive(p)} />
