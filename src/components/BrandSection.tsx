@@ -236,16 +236,16 @@ function ProjectCard({
       className="group relative w-full overflow-hidden border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
     >
       <div
-        className="relative aspect-[16/10] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.03]"
+        className="relative aspect-[3/2] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.03]"
         style={{ background: project.cover.bg }}
       >
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-contain object-center"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/25" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
             <span className="text-xs tracking-[0.4em] text-white/80">
@@ -318,7 +318,7 @@ function ProjectDetail({ project }: { project: Project }) {
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-black/40" />
