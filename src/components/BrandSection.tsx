@@ -302,6 +302,7 @@ function ProjectDetail({ project }: { project: Project }) {
       </DialogHeader>
 
       {/* Hero cover */}
+      {!project.gallery && (
       <div
         className="relative aspect-[16/7] w-full overflow-hidden "
         style={{ background: project.cover.bg }}
@@ -322,6 +323,7 @@ function ProjectDetail({ project }: { project: Project }) {
           </span>
         </div>
       </div>
+      )}
 
       {/* Meta */}
       <div className="grid gap-10 md:grid-cols-2">
