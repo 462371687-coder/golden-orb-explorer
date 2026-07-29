@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import chichaCover from "@/assets/chicha-cover.png.asset.json";
+import belloCover from "@/assets/bello-cover.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -90,7 +92,7 @@ const chicha: Project = {
     bg: "linear-gradient(135deg,#422113 0%,#cf391e 60%,#f7b652 100%)",
     accent: "#fde2a7",
     sub: "千年茶马 · 一盏栖身",
-    img: "/portfolio/chicha-hero.jpg",
+    img: chichaCover.url,
   },
 };
 
@@ -160,7 +162,7 @@ const bello: Project = {
     bg: "linear-gradient(135deg,#3B86FF 0%,#B6E9FE 55%,#FFFBE7 100%)",
     accent: "#FF93B5",
     sub: "每一口　都为宝宝量身定制",
-    img: "/portfolio/bello-hero.jpg",
+    img: belloCover.url,
   },
 };
 
@@ -192,11 +194,11 @@ export default function BrandSection() {
             品牌全案
           </h2>
           <p className="mt-8 max-w-xl text-base leading-relaxed tracking-wider text-white/60 md:text-lg">
-            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。横向滑动浏览，点击卡片进入项目全貌。
+            从命名、视觉系统到落地应用，构建有记忆点的品牌语言。点击卡片进入项目全貌。
           </p>
         </div>
         <p className="hidden text-xs tracking-[0.4em] text-white/40 md:block">
-          ← SCROLL →
+          02 PROJECTS
         </p>
       </motion.div>
 
@@ -205,8 +207,7 @@ export default function BrandSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-        className="mt-16 flex snap-x snap-mandatory gap-8 overflow-x-auto pb-8"
-        style={{ scrollbarWidth: "thin" }}
+        className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2"
       >
         {projects.map((p) => (
           <ProjectCard key={p.id} project={p} onOpen={() => setActive(p)} />
@@ -232,19 +233,19 @@ function ProjectCard({
   return (
     <button
       onClick={onOpen}
-      className="group relative w-[85vw] flex-shrink-0 snap-center overflow-hidden  border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] md:w-[640px]"
+      className="group relative w-full overflow-hidden border border-white/10 text-left transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
     >
       <div
-        className="relative aspect-[4/5] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.05]"
+        className="relative aspect-[16/10] w-full overflow-hidden transition-transform duration-700 group-hover:scale-[1.03]"
         style={{ background: project.cover.bg }}
       >
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
         <div className="absolute inset-0 flex flex-col justify-between p-8">
           <div className="flex items-start justify-between">
             <span className="text-xs tracking-[0.4em] text-white/80">
@@ -267,11 +268,11 @@ function ProjectCard({
             >
               {project.nameEn}
             </p>
-            <h3 className="mt-3 text-6xl font-light tracking-[0.2em] text-white md:text-7xl">
+            <h3 className="mt-3 text-5xl font-light tracking-[0.2em] text-white md:text-6xl">
               {project.name}
             </h3>
-            <p className="mt-4 text-sm tracking-[0.3em] text-white/80">
-              {project.cover.sub}
+            <p className="mt-3 max-w-md text-sm leading-relaxed tracking-[0.2em] text-white/80">
+              {project.tagline}
             </p>
           </div>
         </div>
