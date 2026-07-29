@@ -379,6 +379,20 @@ function ProjectDetail({ project }: { project: Project }) {
       </div>
 
       {/* Content sections */}
+      {project.gallery && (
+        <div className="flex flex-col gap-8">
+          {project.gallery.map((g) => (
+            <img
+              key={g.src}
+              src={g.src}
+              alt={g.alt}
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      )}
+
       {project.sections.map((sec) => (
         <div key={sec.title}>
           <SectionLabel>{sec.title}</SectionLabel>
