@@ -12,6 +12,15 @@ import g7 from "@/assets/chicha/06.jpg.jpg.asset.json";
 import g8 from "@/assets/chicha/07.jpg.jpg.asset.json";
 import g9 from "@/assets/chicha/08.jpg.jpg.asset.json";
 import g10 from "@/assets/chicha/image-6.png.asset.json";
+import b1 from "@/assets/bello/01._jpg-2.jpg.asset.json";
+import b2 from "@/assets/bello/02._jpg.jpg.asset.json";
+import b3 from "@/assets/bello/03._jpg.jpg.asset.json";
+import b4 from "@/assets/bello/04._jpg.jpg.asset.json";
+import b5 from "@/assets/bello/05._jpg.jpg.asset.json";
+import b6 from "@/assets/bello/06._jpg.jpg.asset.json";
+import b7 from "@/assets/bello/07._jpg.jpg.asset.json";
+import b8 from "@/assets/bello/08._jpg.jpg.asset.json";
+import b9 from "@/assets/bello/09._jpg.jpg.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -38,6 +47,7 @@ type Project = {
   slogans: string[];
   sections: { title: string; items: Item[] }[];
   gallery?: { src: string; alt: string }[];
+  minimal?: boolean;
   cover: { bg: string; accent: string; sub: string; img: string };
 };
 
@@ -113,41 +123,18 @@ const bello: Project = {
     "我们用心　宝宝开心　家长放心。",
     "We put our heart into every meal for our baby.",
   ],
-  sections: [
-    {
-      title: "Logo & Identity",
-      items: [
-        { title: "标准制图", tag: "LOGO", img: "/portfolio/bello-logo.jpg" },
-        { title: "色彩规范", tag: "COLOR", img: "/portfolio/bello-colors.jpg" },
-      ],
-    },
-    {
-      title: "阶段化产品",
-      items: [
-        { title: "B1 · 6M+ 初尝期", tag: "STAGE", img: "/portfolio/bello-b1.jpg" },
-        { title: "B2 · 9M+ 咀嚼期", tag: "STAGE", img: "/portfolio/bello-b2.jpg" },
-        { title: "B3 · 12M+ 强化期", tag: "STAGE", img: "/portfolio/bello-b3.jpg" },
-        { title: "B4 · 2y+ 正常饭期", tag: "STAGE", img: "/portfolio/bello-b4.jpg" },
-      ],
-    },
-    {
-      title: "品牌摄影",
-      items: [
-        { title: "宝宝时刻", tag: "PHOTO", img: "/portfolio/bello-baby.jpg" },
-        { title: "家庭用餐", tag: "PHOTO", img: "/portfolio/bello-scene.jpg" },
-        { title: "果蔬干脆罐", tag: "PHOTO", img: "/portfolio/bello-cans.jpg" },
-        { title: "果泥袋装", tag: "PHOTO", img: "/portfolio/bello-pouches.jpg" },
-      ],
-    },
-    {
-      title: "应用延展",
-      items: [
-        { title: "训练勺", tag: "TOOL", img: "/portfolio/bello-spoon.jpg" },
-        { title: "围兜设计", tag: "BIB", img: "/portfolio/bello-bib.jpg" },
-        { title: "阶段菜单", tag: "MENU", img: "/portfolio/bello-menu.jpg" },
-        { title: "小程序 UI", tag: "APP", img: "/portfolio/bello-app.jpg" },
-      ],
-    },
+  sections: [],
+  minimal: true,
+  gallery: [
+    { src: b1.url, alt: "Bello 品牌封面 · 宝宝用餐摄影" },
+    { src: b2.url, alt: "Bello 品牌介绍与关键词" },
+    { src: b3.url, alt: "Bello 品牌价值三角" },
+    { src: b4.url, alt: "Bello Logo · 色彩系统 · 字体规范" },
+    { src: b5.url, alt: "Bello 食材摄影与阶段产品" },
+    { src: b6.url, alt: "Bello 宝宝用餐场景与产品展示" },
+    { src: b7.url, alt: "Bello 菜单与产品展示" },
+    { src: b8.url, alt: "Bello 阶段菜单" },
+    { src: b9.url, alt: "Bello 小程序 UI 延展" },
   ],
   cover: {
     bg: "linear-gradient(135deg,#3B86FF 0%,#B6E9FE 55%,#FFFBE7 100%)",
@@ -326,6 +313,7 @@ function ProjectDetail({ project }: { project: Project }) {
       )}
 
       {/* Meta */}
+      {!project.minimal && (
       <div className="grid gap-10 md:grid-cols-2">
         <Meta label="定位 Positioning" value={project.positioning} />
         <Meta label="品牌价值 Value" value={project.value} />
@@ -335,8 +323,10 @@ function ProjectDetail({ project }: { project: Project }) {
           value={project.keywords.join("　")}
         />
       </div>
+      )}
 
       {/* Colors */}
+      {!project.minimal && (
       <div>
         <SectionLabel>色彩系统 Color System</SectionLabel>
         <div className="mt-6 grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-8">
@@ -356,8 +346,10 @@ function ProjectDetail({ project }: { project: Project }) {
           ))}
         </div>
       </div>
+      )}
 
       {/* Fonts + Slogan */}
+      {!project.minimal && (
       <div className="grid gap-10 md:grid-cols-2">
         <div>
           <SectionLabel>字体 Typography</SectionLabel>
@@ -379,6 +371,7 @@ function ProjectDetail({ project }: { project: Project }) {
           </div>
         </div>
       </div>
+      )}
 
       {/* Content sections */}
       {project.gallery && (
@@ -392,6 +385,13 @@ function ProjectDetail({ project }: { project: Project }) {
               loading="lazy"
             />
           ))}
+        </div>
+      )}
+
+      {project.minimal && (
+        <div className="grid gap-10 md:grid-cols-2">
+          <Meta label="定位 Positioning" value={project.positioning} />
+          <Meta label="品牌价值 Value" value={project.value} />
         </div>
       )}
 
