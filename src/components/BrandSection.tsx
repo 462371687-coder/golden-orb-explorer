@@ -313,6 +313,7 @@ function ProjectDetail({ project }: { project: Project }) {
       )}
 
       {/* Meta */}
+      {!project.minimal && (
       <div className="grid gap-10 md:grid-cols-2">
         <Meta label="定位 Positioning" value={project.positioning} />
         <Meta label="品牌价值 Value" value={project.value} />
@@ -322,8 +323,10 @@ function ProjectDetail({ project }: { project: Project }) {
           value={project.keywords.join("　")}
         />
       </div>
+      )}
 
       {/* Colors */}
+      {!project.minimal && (
       <div>
         <SectionLabel>色彩系统 Color System</SectionLabel>
         <div className="mt-6 grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-8">
@@ -343,8 +346,10 @@ function ProjectDetail({ project }: { project: Project }) {
           ))}
         </div>
       </div>
+      )}
 
       {/* Fonts + Slogan */}
+      {!project.minimal && (
       <div className="grid gap-10 md:grid-cols-2">
         <div>
           <SectionLabel>字体 Typography</SectionLabel>
@@ -366,6 +371,7 @@ function ProjectDetail({ project }: { project: Project }) {
           </div>
         </div>
       </div>
+      )}
 
       {/* Content sections */}
       {project.gallery && (
@@ -379,6 +385,13 @@ function ProjectDetail({ project }: { project: Project }) {
               loading="lazy"
             />
           ))}
+        </div>
+      )}
+
+      {project.minimal && (
+        <div className="grid gap-10 md:grid-cols-2">
+          <Meta label="定位 Positioning" value={project.positioning} />
+          <Meta label="品牌价值 Value" value={project.value} />
         </div>
       )}
 
