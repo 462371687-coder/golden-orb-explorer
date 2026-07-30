@@ -1,22 +1,24 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import t1 from "@/assets/type/type-1.jpg.asset.json";
+import t2 from "@/assets/type/type-2.jpg.asset.json";
+import t3 from "@/assets/type/type-3.jpg.asset.json";
+import t4 from "@/assets/type/type-4.jpg.asset.json";
+import t5 from "@/assets/type/type-5.jpg.asset.json";
+import t6 from "@/assets/type/type-6.jpg.asset.json";
+import t7 from "@/assets/type/type-7.jpg.asset.json";
+import t8 from "@/assets/type/type-8.jpg.asset.json";
+
 const types = [
-  { src: "/portfolio/type-buddhism.jpg", word: "禅", en: "BUDDHISM" },
-  { src: "/portfolio/type-chaoshan.jpg", word: "潮汕", en: "CHAOSHAN" },
-  { src: "/portfolio/type-conscience.jpg", word: "良知", en: "CONSCIENCE" },
-  { src: "/portfolio/type-eating.jpg", word: "食", en: "EATING" },
-  { src: "/portfolio/type-echoes.jpg", word: "回声", en: "ECHOES" },
-  { src: "/portfolio/type-inspiration.jpg", word: "灵感", en: "INSPIRATION" },
-  { src: "/portfolio/type-jasmine.jpg", word: "茉莉", en: "JASMINE" },
-  { src: "/portfolio/type-journey.jpg", word: "旅", en: "JOURNEY" },
-  { src: "/portfolio/type-lava.jpg", word: "熔岩", en: "LAVA" },
-  { src: "/portfolio/type-mayday.jpg", word: "五月天", en: "MAYDAY" },
-  { src: "/portfolio/type-micro.jpg", word: "微", en: "MICRO" },
-  { src: "/portfolio/type-popular.jpg", word: "流行", en: "POPULAR" },
-  { src: "/portfolio/type-rain.jpg", word: "雨", en: "RAIN" },
-  { src: "/portfolio/type-rational.jpg", word: "理性", en: "RATIONAL" },
-  { src: "/portfolio/type-vase.jpg", word: "瓶", en: "VASE" },
+  { src: t1.url, word: "微观差异 / 相对理性", en: "MICROSCOPIC DIFFERENCES" },
+  { src: t2.url, word: "花秋 / 熔岩", en: "HUA QIU / LAVA" },
+  { src: t3.url, word: "为灵感发声 / 良心贩卖机", en: "SPEAK OUT FOR INSPIRATION" },
+  { src: t4.url, word: "花瓶 / 潮汕", en: "VASE / CHAO SHAN" },
+  { src: t5.url, word: "南北之行 / 须弥", en: "JOURNEY / BUDDHISM" },
+  { src: t6.url, word: "茉莉酒 / 香萃", en: "JASMINE WINE / AROMA" },
+  { src: t7.url, word: "流行 / 回响", en: "POPULAR / ECHOES" },
+  { src: t8.url, word: "新雨清泉 / 食在", en: "FRESH RAIN / EATING IN" },
 ];
 
 export default function TypeSection() {
@@ -71,15 +73,14 @@ export default function TypeSection() {
                       opacity: abs === 0 ? 1 : abs === 1 ? 0.45 : 0.18,
                     }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className={`relative aspect-square w-[46vw] shrink-0 md:w-[26vw] ${
-                      abs > 1 ? "hidden md:block" : ""
-                    }`}
+                    className={`shrink-0 ${abs > 1 ? "hidden md:block" : ""}`}
                   >
                     <img
                       src={t.src}
                       alt={t.en}
+                      draggable={false}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className="max-h-[56vh] w-auto max-w-[88vw] select-none object-contain md:max-w-[52vw]"
                     />
                   </motion.button>
                 );
