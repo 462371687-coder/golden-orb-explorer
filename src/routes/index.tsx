@@ -4,6 +4,7 @@ import BrandSymbol3D from "@/components/BrandSymbol3D";
 import BrandSection from "@/components/BrandSection";
 import PosterSection from "@/components/PosterSection";
 import TypeSection from "@/components/TypeSection";
+import IPSection from "@/components/IPSection";
 import AboutSection from "@/components/AboutSection";
 
 export const Route = createFileRoute("/")({
@@ -80,6 +81,7 @@ function Index() {
       <BrandSection />
       <PosterSection />
       <TypeSection />
+      <IPSection />
       <AboutSection />
 
       {/* CONTACT */}
