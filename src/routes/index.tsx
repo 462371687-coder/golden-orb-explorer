@@ -5,6 +5,7 @@ import BrandSection from "@/components/BrandSection";
 import PosterSection from "@/components/PosterSection";
 import TypeSection from "@/components/TypeSection";
 import IPSection from "@/components/IPSection";
+import LogoSection from "@/components/LogoSection";
 import AboutSection from "@/components/AboutSection";
 
 export const Route = createFileRoute("/")({
@@ -82,6 +83,7 @@ function Index() {
       <PosterSection />
       <TypeSection />
       <IPSection />
+      <LogoSection />
       <AboutSection />
 
       {/* CONTACT */}
