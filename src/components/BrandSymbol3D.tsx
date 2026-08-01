@@ -1,122 +1,125 @@
-import { Suspense, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
-import * as THREE from "three";
+import { useEffect, useRef, useState } from "react";
 
-function diamondShape(size: number, radius = 0.04) {
-  // Rounded square that will be rotated 45° to look like a diamond
-  const s = size;
-  const r = radius;
-  const shape = new THREE.Shape();
-  shape.moveTo(-s + r, -s);
-  shape.lineTo(s - r, -s);
-  shape.quadraticCurveTo(s, -s, s, -s + r);
-  shape.lineTo(s, s - r);
-  shape.quadraticCurveTo(s, s, s - r, s);
-  shape.lineTo(-s + r, s);
-  shape.quadraticCurveTo(-s, s, -s, s - r);
-  shape.lineTo(-s, -s + r);
-  shape.quadraticCurveTo(-s, -s, -s + r, -s);
-  return shape;
-}
-
-function fourPointStarShape(outer: number, inner: number) {
-  const shape = new THREE.Shape();
-  // 4-pointed star with concave curves between points
-  shape.moveTo(0, outer);
-  shape.quadraticCurveTo(inner * 0.35, inner * 0.35, outer, 0);
-  shape.quadraticCurveTo(inner * 0.35, -inner * 0.35, 0, -outer);
-  shape.quadraticCurveTo(-inner * 0.35, -inner * 0.35, -outer, 0);
-  shape.quadraticCurveTo(-inner * 0.35, inner * 0.35, 0, outer);
-  return shape;
-}
-
-function LayeredDiamond({ autoSpin }: { autoSpin: boolean }) {
-  const group = useRef<THREE.Group>(null);
-
-  useFrame((_, delta) => {
-    if (autoSpin && group.current) {
-      group.current.rotation.y += delta * 0.35;
-      group.current.rotation.x += delta * 0.08;
-    }
-  });
-
-  const extrude = (depth: number) => ({
-    depth,
-    bevelEnabled: true,
-    bevelThickness: 0.015,
-    bevelSize: 0.015,
-    bevelSegments: 4,
-    curveSegments: 48,
-  });
-
-  // All shapes are squares rotated 45° (the whole group is tilted)
-  return (
-    <group ref={group} rotation={[0, 0, Math.PI / 4]}>
-      {/* Red outer diamond */}
-      <mesh position={[0, 0, 0]} castShadow receiveShadow>
-        <extrudeGeometry args={[diamondShape(1.3, 0.08), extrude(0.22)]} />
-        <meshStandardMaterial color="#cf391e" metalness={0.4} roughness={0.35} />
-      </mesh>
-      {/* Beige layer */}
-      <mesh position={[0, 0, 0.12]}>
-        <extrudeGeometry args={[diamondShape(1.08, 0.07), extrude(0.18)]} />
-        <meshStandardMaterial color="#fde2a7" metalness={0.2} roughness={0.45} />
-      </mesh>
-      {/* Gold inner square */}
-      <mesh position={[0, 0, 0.22]}>
-        <extrudeGeometry args={[diamondShape(0.86, 0.05), extrude(0.16)]} />
-        <meshStandardMaterial color="#f7b652" metalness={0.55} roughness={0.3} />
-      </mesh>
-      {/* Brown 4-point star shadow (slightly bigger) */}
-      <group rotation={[0, 0, -Math.PI / 4]} position={[0, 0, 0.34]}>
-        <mesh>
-          <extrudeGeometry args={[fourPointStarShape(0.78, 0.18), extrude(0.1)]} />
-          <meshStandardMaterial color="#422113" metalness={0.3} roughness={0.55} />
-        </mesh>
-        {/* Gold star on top */}
-        <mesh position={[0, 0, 0.06]}>
-          <extrudeGeometry args={[fourPointStarShape(0.66, 0.14), extrude(0.08)]} />
-          <meshStandardMaterial
-            color="#f7b652"
-            metalness={0.7}
-            roughness={0.22}
-            emissive="#f7b652"
-            emissiveIntensity={0.08}
-          />
-        </mesh>
-      </group>
-    </group>
-  );
-}
-
+/**
+ * Pure CSS 3D brand symbol. No WebGL, no three.js — works in every browser
+ * and degrades gracefully (flat symbol) where 3D transforms are unsupported.
+ */
 export default function BrandSymbol3D() {
-  const [autoSpin, setAutoSpin] = useState(true);
+  const [rot, setRot] = useState({ x: -12, y: 0 });
+  const [scale, setScale] = useState(1);
+  const [dragging, setDragging] = useState(false);
+  const idle = useRef(true);
+  const last = useRef<{ x: number; y: number } | null>(null);
+
+  // auto spin when idle
+  useEffect(() => {
+    let raf = 0;
+    let prev = performance.now();
+    const tick = (t: number) => {
+      const dt = (t - prev) / 1000;
+      prev = t;
+      if (idle.current) {
+        setRot((r) => ({ x: r.x, y: r.y + dt * 22 }));
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    idle.current = false;
+    setDragging(true);
+    last.current = { x: e.clientX, y: e.clientY };
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging || !last.current) return;
+    const dx = e.clientX - last.current.x;
+    const dy = e.clientY - last.current.y;
+    last.current = { x: e.clientX, y: e.clientY };
+    setRot((r) => ({
+      x: Math.max(-80, Math.min(80, r.x - dy * 0.4)),
+      y: r.y + dx * 0.4,
+    }));
+  };
+
+  const endDrag = () => {
+    setDragging(false);
+    last.current = null;
+  };
+
+  const onWheel = (e: React.WheelEvent) => {
+    idle.current = false;
+    setScale((s) => Math.max(0.5, Math.min(3, s - e.deltaY * 0.0015)));
+  };
+
+  const layer = (
+    size: number,
+    z: number,
+    color: string,
+    radius: string,
+    extra?: React.CSSProperties,
+  ): React.CSSProperties => ({
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    width: size,
+    height: size,
+    marginLeft: -size / 2,
+    marginTop: -size / 2,
+    background: color,
+    borderRadius: radius,
+    transform: `translateZ(${z}px)`,
+    ...extra,
+  });
 
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5], fov: 40 }}
-      dpr={[1, 2]}
-      onPointerDown={() => setAutoSpin(false)}
-      onPointerOver={() => setAutoSpin(false)}
-      onPointerOut={() => setAutoSpin(true)}
-      gl={{ antialias: true, alpha: true }}
+    <div
+      className="h-full w-full touch-none select-none"
+      style={{ perspective: 1200, perspectiveOrigin: "center" }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onPointerLeave={() => {
+        endDrag();
+        idle.current = true;
+      }}
+      onMouseEnter={() => (idle.current = false)}
+      onWheel={onWheel}
     >
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[5, 6, 5]} intensity={1.1} />
-      <directionalLight position={[-4, -3, -2]} intensity={0.35} color="#ffd9a8" />
-      <Suspense fallback={null}>
-        <Environment preset="studio" />
-        <LayeredDiamond autoSpin={autoSpin} />
-      </Suspense>
-      <OrbitControls
-        enablePan={false}
-        enableDamping
-        dampingFactor={0.08}
-        minDistance={2.2}
-        maxDistance={9}
-        rotateSpeed={0.9}
-      />
-    </Canvas>
+      <div className="flex h-full w-full items-center justify-center">
+        <div
+          style={{
+            transformStyle: "preserve-3d",
+            transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg) rotateZ(45deg) scale(${scale})`,
+            transition: dragging ? "none" : "transform 80ms linear",
+            width: 260,
+            height: 260,
+            position: "relative",
+            filter: "drop-shadow(0 24px 60px rgba(247,182,82,0.18))",
+          }}
+        >
+          {/* red outer diamond */}
+          <div style={layer(260, 0, "#cf391e", "18px")} />
+          {/* beige layer */}
+          <div style={layer(214, 14, "#fde2a7", "14px")} />
+          {/* gold inner */}
+          <div style={layer(170, 26, "#f7b652", "12px")} />
+          {/* dark brown center block */}
+          <div style={layer(120, 34, "#422113", "10px")} />
+          {/* gold 4-point star */}
+          <div
+            style={layer(96, 44, "#f7b652", "0", {
+              transform: "translateZ(44px) rotateZ(-45deg)",
+              clipPath:
+                "polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%)",
+            })}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
