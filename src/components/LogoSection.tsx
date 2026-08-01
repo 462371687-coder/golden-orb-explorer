@@ -30,6 +30,7 @@ import l26 from "@/assets/logos/logo2-07.jpg.asset.json";
 import l27 from "@/assets/logos/logo2-08.jpg.asset.json";
 import l28 from "@/assets/logos/logo2-09.jpg.asset.json";
 import l29 from "@/assets/logos/logo2-10.jpg.asset.json";
+import l30 from "@/assets/logos/logo3-01.jpg.asset.json";
 
 const placeholder = (n: number) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -39,7 +40,7 @@ const placeholder = (n: number) =>
 const real = [
   l1, l2, l3, l4, l5, l6, l7, l8, l9,
   l10, l11, l12, l13, l14, l15, l16, l17, l18, l19,
-  l20, l21, l22, l23, l24, l25, l26, l27, l28, l29,
+  l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30,
 ].map((a, i) => ({
   src: a.url,
   title: `LOGO ${String(i + 1).padStart(2, "0")}`,
