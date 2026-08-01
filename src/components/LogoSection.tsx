@@ -10,13 +10,26 @@ import l6 from "@/assets/logos/logo1-06.jpg.asset.json";
 import l7 from "@/assets/logos/logo1-07.jpg.asset.json";
 import l8 from "@/assets/logos/logo1-08.jpg.asset.json";
 import l9 from "@/assets/logos/logo1-09.jpg.asset.json";
+import l10 from "@/assets/logos/logo1-10.jpg.asset.json";
+import l11 from "@/assets/logos/logo-02.jpg.asset.json";
+import l12 from "@/assets/logos/logo-03.jpg.asset.json";
+import l13 from "@/assets/logos/logo-04.jpg.asset.json";
+import l14 from "@/assets/logos/logo-05.jpg.asset.json";
+import l15 from "@/assets/logos/logo-06.jpg.asset.json";
+import l16 from "@/assets/logos/logo-07.jpg.asset.json";
+import l17 from "@/assets/logos/logo-08.jpg.asset.json";
+import l18 from "@/assets/logos/logo-09.jpg.asset.json";
+import l19 from "@/assets/logos/logo-10.jpg.asset.json";
 
 const placeholder = (n: number) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
     `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#333"/><text x="150" y="150" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="72" font-weight="bold" text-anchor="middle" dominant-baseline="central">${n}</text></svg>`,
   )}`;
 
-const real = [l1, l2, l3, l4, l5, l6, l7, l8, l9].map((a, i) => ({
+const real = [
+  l1, l2, l3, l4, l5, l6, l7, l8, l9,
+  l10, l11, l12, l13, l14, l15, l16, l17, l18, l19,
+].map((a, i) => ({
   src: a.url,
   title: `LOGO ${String(i + 1).padStart(2, "0")}`,
 }));
