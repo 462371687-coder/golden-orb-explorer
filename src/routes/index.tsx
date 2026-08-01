@@ -7,7 +7,6 @@ import TypeSection from "@/components/TypeSection";
 import IPSection from "@/components/IPSection";
 import LogoSection from "@/components/LogoSection";
 import AboutSection from "@/components/AboutSection";
-import ErrorBoundary from "@/components/ErrorBoundary";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,17 +41,7 @@ function Index() {
       {/* HERO */}
       <section id="top" className="relative h-screen w-full">
         <div className="absolute inset-0 bg-black">
-          <ErrorBoundary
-            fallback={
-              <div className="flex h-full w-full items-center justify-center">
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/50">
-                  3D 预览加载失败，请刷新页面
-                </p>
-              </div>
-            }
-          >
-            <BrandSymbol3D />
-          </ErrorBoundary>
+          <BrandSymbol3D />
         </div>
 
         <motion.p
@@ -90,24 +79,12 @@ function Index() {
         </motion.h2>
       </section>
 
-      <ErrorBoundary>
-        <BrandSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <PosterSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <TypeSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <IPSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <LogoSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <AboutSection />
-      </ErrorBoundary>
+      <BrandSection />
+      <PosterSection />
+      <TypeSection />
+      <IPSection />
+      <LogoSection />
+      <AboutSection />
 
       {/* CONTACT */}
       <section
