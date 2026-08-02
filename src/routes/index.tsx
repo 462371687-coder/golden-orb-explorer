@@ -7,6 +7,17 @@ import TypeSection from "@/components/TypeSection";
 import IPSection from "@/components/IPSection";
 import LogoSection from "@/components/LogoSection";
 import AboutSection from "@/components/AboutSection";
+import CarouselSection from "@/components/CarouselSection";
+import ui1 from "@/assets/other/other-01.jpg.asset.json";
+import ui2 from "@/assets/other/other-02.jpg.asset.json";
+import ui3 from "@/assets/other/other-03.jpg.asset.json";
+import ui4 from "@/assets/other/other-04.jpg.asset.json";
+import cc1 from "@/assets/other/other-07.jpg.asset.json";
+import cc2 from "@/assets/other/other-08.jpg.asset.json";
+import cc3 from "@/assets/other/other-09.jpg.asset.json";
+import cc4 from "@/assets/other/other-12.jpg.asset.json";
+import br1 from "@/assets/other/other-13.jpg.asset.json";
+import br2 from "@/assets/other/other-14.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -84,6 +95,56 @@ function Index() {
       <TypeSection />
       <IPSection />
       <LogoSection />
+
+      <CarouselSection
+        id="ui"
+        eyebrow="06 / UI"
+        title="UI DESIGN"
+        subtitle="UI 界面设计"
+        items={[
+          { src: ui1.url, label: "UI-1" },
+          { src: ui2.url, label: "UI-2" },
+          { src: ui3.url, label: "UI-3" },
+          { src: ui4.url, label: "UI-4" },
+          { label: "UI-5" },
+          { label: "UI-6" },
+        ]}
+      />
+
+      <CarouselSection
+        id="cultural-1"
+        eyebrow="07 / CULTURAL CREATIVE"
+        title="文创设计 一"
+        subtitle="CULTURAL CREATIVE 1"
+        items={[
+          { src: cc1.url, label: "CC1-1" },
+          { src: cc2.url, label: "CC1-2" },
+          { src: cc3.url, label: "CC1-3" },
+          { label: "CC1-4" },
+          { label: "CC1-5" },
+        ]}
+      />
+
+      <CarouselSection
+        id="cultural-2"
+        eyebrow="08 / CULTURAL CREATIVE"
+        title="文创设计 二"
+        subtitle="CULTURAL CREATIVE 2"
+        items={[{ src: cc4.url, label: "CC2-1" }]}
+      />
+
+      <CarouselSection
+        id="brochure"
+        eyebrow="09 / BROCHURE"
+        title="BROCHURE DESIGN"
+        subtitle="画册设计"
+        items={[
+          { src: br1.url, label: "BR-1" },
+          { src: br2.url, label: "BR-2" },
+          { label: "BR-3" },
+        ]}
+      />
+
       <AboutSection />
 
       {/* CONTACT */}
