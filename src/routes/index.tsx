@@ -18,6 +18,11 @@ import cc3 from "@/assets/other/other-09.jpg.asset.json";
 import cc4 from "@/assets/other/other-12.jpg.asset.json";
 import br1 from "@/assets/other/other-13.jpg.asset.json";
 import br2 from "@/assets/other/other-14.jpg.asset.json";
+import ui5 from "@/assets/other/other-n05.jpg.asset.json";
+import ui6 from "@/assets/other/other-n06.jpg.asset.json";
+import cc1d from "@/assets/other/other-n10.jpg.asset.json";
+import cc1e from "@/assets/other/other-n11.jpg.asset.json";
+import br3 from "@/assets/other/other-n15.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -106,8 +111,8 @@ function Index() {
           { src: ui2.url, label: "UI-2" },
           { src: ui3.url, label: "UI-3" },
           { src: ui4.url, label: "UI-4" },
-          { label: "UI-5" },
-          { label: "UI-6" },
+          { src: ui5.url, label: "UI-5" },
+          { src: ui6.url, label: "UI-6" },
         ]}
       />
 
@@ -120,8 +125,8 @@ function Index() {
           { src: cc1.url, label: "CC1-1" },
           { src: cc2.url, label: "CC1-2" },
           { src: cc3.url, label: "CC1-3" },
-          { label: "CC1-4" },
-          { label: "CC1-5" },
+          { src: cc1d.url, label: "CC1-4" },
+          { src: cc1e.url, label: "CC1-5" },
         ]}
       />
 
@@ -141,7 +146,7 @@ function Index() {
         items={[
           { src: br1.url, label: "BR-1" },
           { src: br2.url, label: "BR-2" },
-          { label: "BR-3" },
+          { src: br3.url, label: "BR-3" },
         ]}
       />
 
