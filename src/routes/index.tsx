@@ -120,36 +120,32 @@ function Index() {
       />
 
       <CarouselSection
-        id="cultural-1"
+        id="cultural"
         eyebrow="07 / CULTURAL CREATIVE"
-        title="文创设计 一"
-        subtitle="CULTURAL CREATIVE 1"
+        title="文创设计"
+        subtitle="CULTURAL CREATIVE"
         items={[
-          { src: cc1.url, label: "CC1-1" },
-          { src: cc2.url, label: "CC1-2" },
-          { src: cc3.url, label: "CC1-3" },
-          { src: cc1d.url, label: "CC1-4" },
-          { src: cc1e.url, label: "CC1-5" },
+          { src: cc1.url, label: "CC-1" },
+          { src: cc2.url, label: "CC-2" },
+          { src: cc3.url, label: "CC-3" },
+          { src: cc1d.url, label: "CC-4" },
+          { src: cc1e.url, label: "CC-5" },
+          { src: cc4.url, label: "CC-6" },
         ]}
       />
 
       <CarouselSection
-        id="cultural-2"
-        eyebrow="08 / CULTURAL CREATIVE"
-        title="文创设计 二"
-        subtitle="CULTURAL CREATIVE 2"
-        items={[{ src: cc4.url, label: "CC2-1" }]}
-      />
-
-      <CarouselSection
         id="brochure"
-        eyebrow="09 / BROCHURE"
+        eyebrow="08 / BROCHURE"
         title="BROCHURE DESIGN"
         subtitle="画册设计"
         items={[
           { src: br1.url, label: "BR-1" },
-          { src: br2.url, label: "BR-2" },
-          { src: br3.url, label: "BR-3" },
+          { src: br14.url, label: "BR-2" },
+          { src: br15.url, label: "BR-3" },
+          { src: br16.url, label: "BR-4" },
+          { src: br17.url, label: "BR-5" },
+          { src: br18.url, label: "BR-6" },
         ]}
       />
 
