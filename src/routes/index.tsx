@@ -17,12 +17,15 @@ import cc2 from "@/assets/other/other-08.jpg.asset.json";
 import cc3 from "@/assets/other/other-09.jpg.asset.json";
 import cc4 from "@/assets/other/other-12.jpg.asset.json";
 import br1 from "@/assets/other/other-13.jpg.asset.json";
-import br2 from "@/assets/other/other-14.jpg.asset.json";
+import br14 from "@/assets/other/brochure-14.jpg.asset.json";
+import br15 from "@/assets/other/brochure-15.jpg.asset.json";
+import br16 from "@/assets/other/brochure-16.jpg.asset.json";
+import br17 from "@/assets/other/brochure-17.jpg.asset.json";
+import br18 from "@/assets/other/brochure-18.jpg.asset.json";
 import ui5 from "@/assets/other/other-n05.jpg.asset.json";
 import ui6 from "@/assets/other/other-n06.jpg.asset.json";
 import cc1d from "@/assets/other/other-n10.jpg.asset.json";
 import cc1e from "@/assets/other/other-n11.jpg.asset.json";
-import br3 from "@/assets/other/other-n15.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
