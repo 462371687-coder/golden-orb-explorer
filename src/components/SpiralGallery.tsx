@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactElement,
+} from "react";
 
 import BrandSection from "@/components/BrandSection";
 import PosterSection from "@/components/PosterSection";
@@ -51,7 +58,7 @@ type Card = {
   en: string;
   zh: string;
   cover: string;
-  content: () => JSX.Element;
+  content: () => ReactElement;
 };
 
 const cards: Card[] = [
