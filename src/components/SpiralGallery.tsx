@@ -183,8 +183,8 @@ export default function SpiralGallery() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const radius = isMobile ? 190 : 340;
-  const stepY = isMobile ? 40 : 50;
+  const radius = isMobile ? 180 : 315;
+  const stepY = isMobile ? 38 : 46;
 
   /* ---------- animation loop ---------- */
   useEffect(() => {
@@ -355,7 +355,7 @@ export default function SpiralGallery() {
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => setOpenIndex(i)}
-                className="absolute left-0 top-0 w-[58vw] max-w-[300px] cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-[270px]"
+                className="absolute left-0 top-0 w-[58vw] max-w-[300px] cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-[250px]"
                 style={{ opacity: 0, willChange: "transform, opacity, filter" }}
               >
                 <img
