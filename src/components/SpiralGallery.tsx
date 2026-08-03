@@ -183,8 +183,8 @@ export default function SpiralGallery() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const radius = isMobile ? 220 : 430;
-  const stepY = isMobile ? 42 : 58;
+  const radius = isMobile ? 190 : 340;
+  const stepY = isMobile ? 40 : 50;
 
   /* ---------- animation loop ---------- */
   useEffect(() => {
@@ -343,7 +343,7 @@ export default function SpiralGallery() {
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
           className="relative h-screen w-full cursor-grab touch-none active:cursor-grabbing"
-          style={{ perspective: "1200px", perspectiveOrigin: "center center" }}
+          style={{ perspective: "1600px", perspectiveOrigin: "center center" }}
         >
           <div className="absolute left-1/2 top-1/2 h-0 w-0 [transform-style:preserve-3d]">
             {cards.map((c, i) => (
