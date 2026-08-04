@@ -15,12 +15,16 @@ import LogoSection from "@/components/LogoSection";
 import AboutSection from "@/components/AboutSection";
 import CarouselSection from "@/components/CarouselSection";
 
-import portrait from "@/assets/portrait.png.asset.json";
-import chichaCover from "@/assets/chicha-cover.png.asset.json";
-import poster1 from "@/assets/posters/poster-1.jpg.asset.json";
-import type1 from "@/assets/type/type-1.jpg.asset.json";
-import ipMain from "@/assets/ip/ip-main.png.asset.json";
-import logoCover from "@/assets/logos/logo1-01.jpg.asset.json";
+import coverAbout from "@/assets/covers/cover-about.jpg.asset.json";
+import coverChicha from "@/assets/covers/cover-chicha.png.asset.json";
+import coverBello from "@/assets/covers/cover-bello.png.asset.json";
+import coverPoster from "@/assets/covers/cover-poster.jpg.asset.json";
+import coverType from "@/assets/covers/cover-type.jpg.asset.json";
+import coverIp from "@/assets/covers/cover-ip.jpg.asset.json";
+import coverLogo from "@/assets/covers/cover-logo.jpg.asset.json";
+import coverUi from "@/assets/covers/cover-ui.jpg.asset.json";
+import coverCultural from "@/assets/covers/cover-cultural.png.asset.json";
+import coverBrochure from "@/assets/covers/cover-brochure.jpg.asset.json";
 import ui1 from "@/assets/other/other-01.jpg.asset.json";
 import ui2 from "@/assets/other/other-02.jpg.asset.json";
 import ui3 from "@/assets/other/other-03.jpg.asset.json";
@@ -64,51 +68,58 @@ type Card = {
 const cards: Card[] = [
   {
     id: "about",
-    en: "ABOUT",
+    en: "ABOUT ME",
     zh: "自我介绍",
-    cover: portrait.url,
+    cover: coverAbout.url,
     content: () => <AboutSection />,
   },
   {
-    id: "brand",
-    en: "BRAND IDENTITY",
-    zh: "品牌全案",
-    cover: chichaCover.url,
-    content: () => <BrandSection />,
+    id: "chicha",
+    en: "QICHA",
+    zh: "栖茶",
+    cover: coverChicha.url,
+    content: () => <BrandSection only="chicha" />,
+  },
+  {
+    id: "bello",
+    en: "BELLO",
+    zh: "贝力",
+    cover: coverBello.url,
+    content: () => <BrandSection only="bello" />,
   },
   {
     id: "poster",
     en: "POSTER DESIGN",
     zh: "海报设计",
-    cover: poster1.url,
+    cover: coverPoster.url,
     content: () => <PosterSection />,
   },
   {
     id: "type",
     en: "TYPE COMBINATION",
     zh: "字体设计",
-    cover: type1.url,
+    cover: coverType.url,
     content: () => <TypeSection />,
   },
   {
     id: "ip",
     en: "IP DESIGN",
     zh: "IP 设计",
-    cover: ipMain.url,
+    cover: coverIp.url,
     content: () => <IPSection />,
   },
   {
     id: "logo",
     en: "LOGO DESIGN",
     zh: "标志设计",
-    cover: logoCover.url,
+    cover: coverLogo.url,
     content: () => <LogoSection />,
   },
   {
     id: "ui",
     en: "UI DESIGN",
     zh: "界面设计",
-    cover: ui1.url,
+    cover: coverUi.url,
     content: () => (
       <CarouselSection
         id="ui"
@@ -123,7 +134,7 @@ const cards: Card[] = [
     id: "cultural",
     en: "CULTURAL CREATIVE",
     zh: "文创设计",
-    cover: cc1.url,
+    cover: coverCultural.url,
     content: () => (
       <CarouselSection
         id="cultural"
@@ -138,7 +149,7 @@ const cards: Card[] = [
     id: "brochure",
     en: "BROCHURE DESIGN",
     zh: "画册设计",
-    cover: br1.url,
+    cover: coverBrochure.url,
     content: () => (
       <CarouselSection
         id="brochure"
