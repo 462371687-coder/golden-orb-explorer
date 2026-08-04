@@ -315,9 +315,9 @@ export default function SpiralGallery() {
     <main className="relative min-h-screen w-full overflow-hidden bg-black text-white">
       {/* LOGO */}
       <div className="fixed left-6 top-6 z-40 select-none">
-        <div className="flex h-10 w-10 items-center justify-center border border-white/40 text-xs font-extrabold tracking-[0.15em]">
-          ZS
-        </div>
+        <p className="text-sm font-medium tracking-[0.25em] text-white">
+          Portfolio
+        </p>
       </div>
 
       {/* MODE SWITCH */}
@@ -374,7 +374,7 @@ export default function SpiralGallery() {
                   alt={`${c.en} — ${c.zh}`}
                   draggable={false}
                   loading="lazy"
-                  className="block aspect-[3/2] w-full select-none object-cover"
+                  className="block aspect-[3/2] w-full select-none bg-black object-contain"
                 />
                 {hovered === i && (
                   <div className="absolute inset-x-0 bottom-0 bg-black/70 px-4 py-3 text-center">
