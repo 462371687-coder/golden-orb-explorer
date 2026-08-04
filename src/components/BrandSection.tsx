@@ -233,7 +233,7 @@ function ProjectCard({
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-contain object-center"
+          className="absolute inset-0 h-full w-full rounded-[20px] object-contain object-center"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/25" />
@@ -333,7 +333,7 @@ function ProjectDetail({
         <img
           src={project.cover.img}
           alt={project.name}
-          className="absolute inset-0 h-full w-full object-contain"
+          className="absolute inset-0 h-full w-full rounded-[20px] object-contain"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -417,7 +417,7 @@ function ProjectDetail({
               key={g.src}
               src={g.src}
               alt={g.alt}
-              className="block h-auto w-full"
+              className="block h-auto w-full rounded-[20px]"
               loading="lazy"
             />
           ))}
@@ -443,7 +443,7 @@ function ProjectDetail({
                 <img
                   src={it.img}
                   alt={it.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full rounded-[16px] object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />

@@ -80,7 +80,7 @@ export default function TypeSection() {
                       alt={t.en}
                       draggable={false}
                       loading="lazy"
-                      className="max-h-[56vh] w-auto max-w-[88vw] select-none object-contain md:max-w-[52vw]"
+                      className="max-h-[56vh] w-auto max-w-[88vw] select-none rounded-[20px] object-contain md:max-w-[52vw]"
                     />
                   </motion.button>
                 );

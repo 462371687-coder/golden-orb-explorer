@@ -76,7 +76,7 @@ export default function PosterSection() {
                   alt={p.en}
                   draggable={false}
                   loading="lazy"
-                  className="max-h-[52vh] w-auto max-w-[80vw] select-none object-contain md:max-w-[46vw]"
+                  className="max-h-[52vh] w-auto max-w-[80vw] select-none rounded-[20px] object-contain md:max-w-[46vw]"
                 />
               </motion.button>
             );
@@ -121,7 +121,7 @@ export default function PosterSection() {
             <img
               src={posters[index].src}
               alt={posters[index].en}
-              className="max-h-[85vh] max-w-[90vw] object-contain"
+              className="max-h-[85vh] max-w-[85vw] rounded-[20px] object-contain"
             />
             <button
               onClick={() => setZoom(false)}
