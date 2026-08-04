@@ -105,7 +105,7 @@ export default function CarouselSection({
               >
                 <Frame
                   item={item}
-                  className="max-h-[52vh] w-auto max-w-[80vw] select-none object-contain md:max-w-[46vw]"
+                  className="max-h-[52vh] w-auto max-w-[80vw] select-none rounded-[20px] object-contain md:max-w-[46vw]"
                 />
               </motion.button>
             );
@@ -147,7 +147,7 @@ export default function CarouselSection({
             <div onClick={(e) => e.stopPropagation()}>
               <Frame
                 item={items[index]}
-                className="max-h-[85vh] max-w-[90vw] object-contain"
+                className="max-h-[85vh] max-w-[85vw] rounded-[20px] object-contain"
               />
             </div>
             <button

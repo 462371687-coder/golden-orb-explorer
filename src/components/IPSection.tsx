@@ -117,7 +117,7 @@ export default function IPSection() {
                 alt={w.title}
                 loading="lazy"
                 draggable={false}
-                className="block h-auto w-full select-none object-contain transition-all duration-300"
+                className="block h-auto w-full select-none rounded-[16px] object-contain transition-all duration-300"
                 style={{
                   transform: hovered === i ? "scale(1.1)" : "scale(1)",
                   filter:
@@ -165,7 +165,7 @@ export default function IPSection() {
                 src={ipMain.url}
                 alt="TINY FROG IP"
                 draggable={false}
-                className="block h-auto w-full select-none object-contain"
+                className="block h-auto w-full select-none rounded-[20px] object-contain"
               />
             </div>
           </motion.div>
@@ -182,7 +182,7 @@ export default function IPSection() {
                 src={w.src}
                 alt={w.title}
                 loading="lazy"
-                className="block h-auto w-full object-contain"
+                className="block h-auto w-full rounded-[16px] object-contain"
               />
             </button>
           ))}
@@ -213,7 +213,7 @@ export default function IPSection() {
               src={works[lightbox].src}
               alt={works[lightbox].title}
               onClick={(e) => e.stopPropagation()}
-              className="max-h-[85vh] max-w-[85vw] object-contain"
+              className="max-h-[85vh] max-w-[85vw] rounded-[20px] object-contain"
             />
             <button
               onClick={(e) => {
