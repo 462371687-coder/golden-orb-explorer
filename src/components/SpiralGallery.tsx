@@ -20,9 +20,9 @@ import coverChicha from "@/assets/covers/cover-chicha.png.asset.json";
 import coverBello from "@/assets/covers/cover-bello.png.asset.json";
 import coverPoster from "@/assets/covers/cover-poster.jpg.asset.json";
 import coverType from "@/assets/covers/cover-type.jpg.asset.json";
-import coverIp from "@/assets/covers/cover-ip.jpg.asset.json";
+import coverIp from "@/assets/covers/cover-ip-v2.png.asset.json";
 import coverLogo from "@/assets/covers/cover-logo.jpg.asset.json";
-import coverUi from "@/assets/covers/cover-ui-new.png.asset.json";
+import coverUi from "@/assets/covers/cover-ui-v2.jpg.asset.json";
 import coverCultural from "@/assets/covers/cover-cultural.png.asset.json";
 import coverBrochure from "@/assets/covers/cover-brochure.jpg.asset.json";
 import ui1 from "@/assets/other/other-01.jpg.asset.json";
@@ -377,7 +377,7 @@ export default function SpiralGallery() {
                   alt={`${c.en} — ${c.zh}`}
                   draggable={false}
                   loading="lazy"
-                  className="block aspect-[16/10] h-auto w-full max-w-full select-none rounded-[20px] bg-black object-contain"
+                  className="block h-auto max-h-[400px] w-full max-w-full select-none rounded-[20px] bg-black object-contain"
                 />
                 {hovered === i && (
                   <div className="absolute inset-x-0 bottom-0 bg-black/70 px-4 py-3 text-center">
