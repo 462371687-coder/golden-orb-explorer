@@ -283,9 +283,31 @@ function ProjectCard({
   );
 }
 
-function ProjectDetail({ project }: { project: Project }) {
+function ProjectDetail({
+  project,
+  standalone,
+}: {
+  project: Project;
+  standalone?: boolean;
+}) {
   return (
     <div className="space-y-12">
+      {standalone ? (
+        <header className="space-y-4 text-left">
+          <p
+            className="text-xs uppercase tracking-[0.5em]"
+            style={{ color: project.cover.accent }}
+          >
+            {project.code} · {project.nameEn}
+          </p>
+          <h2 className="text-5xl font-light tracking-[0.2em] text-white md:text-6xl">
+            {project.name}
+          </h2>
+          <p className="text-sm tracking-[0.2em] text-white/60">
+            {project.tagline}
+          </p>
+        </header>
+      ) : (
       <DialogHeader className="space-y-4 text-left">
         <p
           className="text-xs uppercase tracking-[0.5em]"
@@ -300,6 +322,7 @@ function ProjectDetail({ project }: { project: Project }) {
           {project.tagline}
         </DialogDescription>
       </DialogHeader>
+      )}
 
       {/* Hero cover */}
       {!project.gallery && (
