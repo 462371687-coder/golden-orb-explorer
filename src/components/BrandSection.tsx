@@ -146,8 +146,21 @@ const bello: Project = {
 
 const projects: Project[] = [chicha, bello];
 
-export default function BrandSection() {
+export default function BrandSection({
+  only,
+}: {
+  only?: "chicha" | "bello";
+}) {
   const [active, setActive] = useState<Project | null>(null);
+
+  if (only) {
+    const p = only === "chicha" ? chicha : bello;
+    return (
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <ProjectDetail project={p} />
+      </section>
+    );
+  }
 
   return (
     <section
