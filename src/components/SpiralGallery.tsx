@@ -22,7 +22,7 @@ import coverPoster from "@/assets/covers/cover-poster.jpg.asset.json";
 import coverType from "@/assets/covers/cover-type.jpg.asset.json";
 import coverIp from "@/assets/covers/cover-ip.jpg.asset.json";
 import coverLogo from "@/assets/covers/cover-logo.jpg.asset.json";
-import coverUi from "@/assets/covers/cover-ui.jpg.asset.json";
+import coverUi from "@/assets/covers/cover-ui-new.png.asset.json";
 import coverCultural from "@/assets/covers/cover-cultural.png.asset.json";
 import coverBrochure from "@/assets/covers/cover-brochure.jpg.asset.json";
 import ui1 from "@/assets/other/other-01.jpg.asset.json";
@@ -172,7 +172,7 @@ export default function SpiralGallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
   const [listHover, setListHover] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [bp, setBp] = useState<"sm" | "md" | "lg">("lg");
 
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -188,14 +188,17 @@ export default function SpiralGallery() {
   pausedRef.current = openIndex !== null || mode !== "spiral";
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
+    const onResize = () => {
+      const w = window.innerWidth;
+      setBp(w < 768 ? "sm" : w < 1280 ? "md" : "lg");
+    };
     onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const radius = isMobile ? 180 : 315;
-  const stepY = isMobile ? 38 : 46;
+  const radius = bp === "sm" ? 225 : bp === "md" ? 380 : 520;
+  const stepY = bp === "sm" ? 34 : bp === "md" ? 44 : 52;
 
   /* ---------- animation loop ---------- */
   useEffect(() => {
@@ -366,7 +369,7 @@ export default function SpiralGallery() {
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => setOpenIndex(i)}
-                className="absolute left-0 top-0 w-[58vw] max-w-[300px] cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-[250px]"
+                className="absolute left-0 top-0 w-[clamp(160px,50vw,200px)] cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-[clamp(220px,22vw,260px)] xl:w-[clamp(280px,20vw,320px)]"
                 style={{ opacity: 0, willChange: "transform, opacity, filter" }}
               >
                 <img
@@ -374,7 +377,7 @@ export default function SpiralGallery() {
                   alt={`${c.en} — ${c.zh}`}
                   draggable={false}
                   loading="lazy"
-                  className="block aspect-[3/2] w-full select-none bg-black object-contain"
+                  className="block aspect-[16/10] h-auto w-full max-w-full select-none rounded-[20px] bg-black object-contain"
                 />
                 {hovered === i && (
                   <div className="absolute inset-x-0 bottom-0 bg-black/70 px-4 py-3 text-center">
@@ -422,7 +425,7 @@ export default function SpiralGallery() {
             <img
               src={cards[listHover].cover}
               alt={cards[listHover].en}
-              className="pointer-events-none fixed bottom-10 right-10 hidden w-[280px] rounded-[16px] object-cover md:block"
+              className="pointer-events-none fixed bottom-10 right-10 hidden w-[clamp(220px,20vw,300px)] rounded-[20px] object-cover md:block"
             />
           )}
         </div>
