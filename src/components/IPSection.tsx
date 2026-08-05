@@ -9,6 +9,10 @@ import ip4 from "@/assets/ip/ip-4.jpg.asset.json";
 import ip5 from "@/assets/ip/ip-5.jpg.asset.json";
 import ip6 from "@/assets/ip/ip-6.jpg.asset.json";
 import ip7 from "@/assets/ip/ip-7.jpg.asset.json";
+import ip15 from "@/assets/ip/ip-15.jpg.asset.json";
+import ip16 from "@/assets/ip/ip-16.jpg.asset.json";
+import ip17 from "@/assets/ip/ip-17.jpg.asset.json";
+import ip18 from "@/assets/ip/ip-18.jpg.asset.json";
 
 type Work = {
   src: string;
@@ -20,13 +24,17 @@ type Work = {
 };
 
 const works: Work[] = [
-  { src: ip1.url, title: "TINY FROG — KEY VISUAL", left: "6%", top: "10%", width: 220, delay: 0 },
-  { src: ip2.url, title: "TINY FROG — IP 三视图", left: "74%", top: "6%", width: 210, delay: 0.6 },
-  { src: ip3.url, title: "IP 主题变装 COSTUMES", left: "80%", top: "38%", width: 190, delay: 1.2 },
-  { src: ip4.url, title: "IP 场景应用", left: "68%", top: "70%", width: 200, delay: 0.3 },
-  { src: ip5.url, title: "吊卡 & 半调延展", left: "34%", top: "80%", width: 185, delay: 0.9 },
-  { src: ip6.url, title: "品牌物料与表情延展", left: "3%", top: "62%", width: 215, delay: 1.5 },
-  { src: ip7.url, title: "POP MART 周边全家福", left: "16%", top: "34%", width: 180, delay: 0.45 },
+  { src: ip1.url, title: "TINY FROG — KEY VISUAL", left: "4%", top: "6%", width: 210, delay: 0 },
+  { src: ip2.url, title: "TINY FROG — IP 三视图", left: "72%", top: "3%", width: 200, delay: 0.6 },
+  { src: ip7.url, title: "POP MART 周边全家福", left: "20%", top: "24%", width: 165, delay: 0.45 },
+  { src: ip15.url, title: "RAINY PLANET — 陈列展示", left: "50%", top: "10%", width: 220, delay: 1.1 },
+  { src: ip3.url, title: "IP 主题变装 COSTUMES", left: "80%", top: "34%", width: 175, delay: 1.2 },
+  { src: ip16.url, title: "RAINY PLANET — 导视系统", left: "1%", top: "40%", width: 170, delay: 0.75 },
+  { src: ip17.url, title: "RAINY PLANET — 展览物料", left: "71%", top: "56%", width: 205, delay: 0.2 },
+  { src: ip6.url, title: "品牌物料与表情延展", left: "6%", top: "68%", width: 195, delay: 1.5 },
+  { src: ip18.url, title: "RAINY PLANET — 包装礼盒", left: "44%", top: "84%", width: 210, delay: 0.95 },
+  { src: ip5.url, title: "吊卡 & 半调延展", left: "26%", top: "86%", width: 170, delay: 0.5 },
+  { src: ip4.url, title: "IP 场景应用", left: "78%", top: "80%", width: 165, delay: 1.35 },
 ];
 
 export default function IPSection() {
@@ -117,9 +125,9 @@ export default function IPSection() {
                 alt={w.title}
                 loading="lazy"
                 draggable={false}
-                className="block h-auto w-full select-none rounded-[16px] object-contain transition-all duration-300"
+                className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
                 style={{
-                  transform: hovered === i ? "scale(1.1)" : "scale(1)",
+                  transform: hovered === i ? "scale(1.15)" : "scale(1)",
                   filter:
                     hovered === null
                       ? "brightness(1)"
@@ -170,7 +178,7 @@ export default function IPSection() {
             </div>
           </motion.div>
           <p className="mt-6 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-white/40">
-            DRAG TO ROTATE · SCROLL TO ZOOM
+            HOVER TO PREVIEW · CLICK TO VIEW
           </p>
         </motion.div>
 
