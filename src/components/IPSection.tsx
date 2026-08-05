@@ -28,13 +28,13 @@ const works: Work[] = [
   { src: ip2.url, title: "TINY FROG — IP 三视图", left: "72%", top: "3%", width: 200, delay: 0.6 },
   { src: ip7.url, title: "POP MART 周边全家福", left: "20%", top: "24%", width: 165, delay: 0.45 },
   { src: ip15.url, title: "RAINY PLANET — 陈列展示", left: "50%", top: "10%", width: 220, delay: 1.1 },
-  { src: ip3.url, title: "IP 主题变装 COSTUMES", left: "83%", top: "32%", width: 175, delay: 1.2 },
+  { src: ip3.url, title: "IP 主题变装 COSTUMES", left: "80%", top: "34%", width: 175, delay: 1.2 },
   { src: ip16.url, title: "RAINY PLANET — 导视系统", left: "1%", top: "40%", width: 170, delay: 0.75 },
   { src: ip17.url, title: "RAINY PLANET — 展览物料", left: "71%", top: "56%", width: 205, delay: 0.2 },
   { src: ip6.url, title: "品牌物料与表情延展", left: "6%", top: "68%", width: 195, delay: 1.5 },
   { src: ip18.url, title: "RAINY PLANET — 包装礼盒", left: "44%", top: "84%", width: 210, delay: 0.95 },
   { src: ip5.url, title: "吊卡 & 半调延展", left: "26%", top: "86%", width: 170, delay: 0.5 },
-  { src: ip4.url, title: "IP 场景应用", left: "88%", top: "78%", width: 165, delay: 1.35 },
+  { src: ip4.url, title: "IP 场景应用", left: "78%", top: "80%", width: 165, delay: 1.35 },
 ];
 
 export default function IPSection() {
