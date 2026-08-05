@@ -9,132 +9,41 @@ import ip4 from "@/assets/ip/ip-4.jpg.asset.json";
 import ip5 from "@/assets/ip/ip-5.jpg.asset.json";
 import ip6 from "@/assets/ip/ip-6.jpg.asset.json";
 import ip7 from "@/assets/ip/ip-7.jpg.asset.json";
-import n08 from "@/assets/ip/IP-08-2.jpg.asset.json";
-import n09 from "@/assets/ip/IP-09-2.jpg.asset.json";
-import n10 from "@/assets/ip/IP-10-2.jpg.asset.json";
-import n11 from "@/assets/ip/IP-11-2.jpg.asset.json";
-import n12 from "@/assets/ip/IP-12-2.jpg.asset.json";
-import n15 from "@/assets/ip/IP-15-2.jpg.asset.json";
-import n16 from "@/assets/ip/IP-16-2.jpg.asset.json";
-import n17 from "@/assets/ip/IP-17-2.jpg.asset.json";
-import n18 from "@/assets/ip/IP-18-2.jpg.asset.json";
+import ip15 from "@/assets/ip/ip-15.jpg.asset.json";
+import ip16 from "@/assets/ip/ip-16.jpg.asset.json";
+import ip17 from "@/assets/ip/ip-17.jpg.asset.json";
+import ip18 from "@/assets/ip/ip-18.jpg.asset.json";
 
-const works = [
-  { src: ip1.url, title: "TINY FROG — KEY VISUAL" },
-  { src: ip2.url, title: "TINY FROG — IP 三视图" },
-  { src: ip3.url, title: "IP 主题变装 COSTUMES" },
-  { src: ip4.url, title: "IP 场景应用" },
-  { src: ip5.url, title: "吊卡 & 半调延展" },
-  { src: ip6.url, title: "品牌物料与表情延展" },
-  { src: ip7.url, title: "POP MART 周边全家福" },
-  { src: n08.url, title: "TINY FROG — 夏日泳圈" },
-  { src: n09.url, title: "TINY FROG — 云端彩虹" },
-  { src: n10.url, title: "TINY FROG — 草地野餐" },
-  { src: n11.url, title: "TINY FROG — 雨天咖啡" },
-  { src: n12.url, title: "TINY FROG — 森林探索" },
-  { src: n15.url, title: "RAINY PLANET — 陈列展示" },
-  { src: n16.url, title: "RAINY PLANET — 导视系统" },
-  { src: n17.url, title: "RAINY PLANET — 展览物料" },
-  { src: n18.url, title: "RAINY PLANET — 包装礼盒" },
+type Work = {
+  src: string;
+  title: string;
+  left: string;
+  top: string;
+  width: number;
+  delay: number;
+};
+
+const works: Work[] = [
+  { src: ip1.url, title: "TINY FROG — KEY VISUAL", left: "4%", top: "6%", width: 210, delay: 0 },
+  { src: ip2.url, title: "TINY FROG — IP 三视图", left: "72%", top: "3%", width: 200, delay: 0.6 },
+  { src: ip7.url, title: "POP MART 周边全家福", left: "20%", top: "24%", width: 165, delay: 0.45 },
+  { src: ip15.url, title: "RAINY PLANET — 陈列展示", left: "50%", top: "10%", width: 220, delay: 1.1 },
+  { src: ip3.url, title: "IP 主题变装 COSTUMES", left: "80%", top: "34%", width: 175, delay: 1.2 },
+  { src: ip16.url, title: "RAINY PLANET — 导视系统", left: "1%", top: "40%", width: 170, delay: 0.75 },
+  { src: ip17.url, title: "RAINY PLANET — 展览物料", left: "71%", top: "56%", width: 205, delay: 0.2 },
+  { src: ip6.url, title: "品牌物料与表情延展", left: "6%", top: "68%", width: 195, delay: 1.5 },
+  { src: ip18.url, title: "RAINY PLANET — 包装礼盒", left: "44%", top: "84%", width: 210, delay: 0.95 },
+  { src: ip5.url, title: "吊卡 & 半调延展", left: "26%", top: "86%", width: 170, delay: 0.5 },
+  { src: ip4.url, title: "IP 场景应用", left: "78%", top: "80%", width: 165, delay: 1.35 },
 ];
 
-const TILT = 65;
-const DEFAULT_SPEED = 9; // deg per second → 40s per revolution
-
 export default function IPSection() {
-  const [angle, setAngle] = useState(0);
+  const [rot, setRot] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(1);
   const [hovered, setHovered] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const [radius, setRadius] = useState(450);
-  const [cardW, setCardW] = useState(130);
-
-  const speed = useRef(DEFAULT_SPEED);
-  const angleRef = useRef(0);
-  const hoveredRef = useRef<number | null>(null);
   const dragging = useRef(false);
-  const lastX = useRef(0);
-  const lastT = useRef(0);
-  const velocity = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    hoveredRef.current = hovered;
-  }, [hovered]);
-
-  // responsive orbit sizing
-  useEffect(() => {
-    const apply = () => {
-      const w = window.innerWidth;
-      if (w < 768) {
-        setRadius(140);
-        setCardW(80);
-      } else if (w < 1280) {
-        setRadius(320);
-        setCardW(110);
-      } else {
-        setRadius(460);
-        setCardW(130);
-      }
-    };
-    apply();
-    window.addEventListener("resize", apply);
-    return () => window.removeEventListener("resize", apply);
-  }, []);
-
-  // animation loop
-  useEffect(() => {
-    let raf = 0;
-    let prev = performance.now();
-    const tick = (now: number) => {
-      const dt = Math.min(0.05, (now - prev) / 1000);
-      prev = now;
-      if (!dragging.current && hoveredRef.current === null) {
-        // ease speed back to default
-        speed.current += (DEFAULT_SPEED - speed.current) * Math.min(1, dt * 1.2);
-        angleRef.current += speed.current * dt;
-        setAngle(angleRef.current);
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  // wheel accelerate (non-passive)
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const onWheel = (e: WheelEvent) => {
-      const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
-      const next = speed.current - dy * 0.05;
-      speed.current = Math.max(0, Math.min(DEFAULT_SPEED * 5, next));
-    };
-    el.addEventListener("wheel", onWheel, { passive: true });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, []);
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    dragging.current = true;
-    lastX.current = e.clientX;
-    lastT.current = performance.now();
-    velocity.current = 0;
-  };
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!dragging.current) return;
-    const now = performance.now();
-    const dx = e.clientX - lastX.current;
-    const dt = Math.max(1, now - lastT.current) / 1000;
-    lastX.current = e.clientX;
-    lastT.current = now;
-    angleRef.current += dx * 0.25;
-    velocity.current = (dx * 0.25) / dt;
-    setAngle(angleRef.current);
-  };
-  const stopDrag = () => {
-    if (!dragging.current) return;
-    dragging.current = false;
-    speed.current = Math.max(0, Math.min(DEFAULT_SPEED * 5, Math.abs(velocity.current)));
-  };
+  const last = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -148,10 +57,27 @@ export default function IPSection() {
     return () => window.removeEventListener("keydown", onKey);
   }, [lightbox]);
 
-  const step = 360 / works.length;
+  const onPointerDown = (e: React.PointerEvent) => {
+    dragging.current = true;
+    last.current = { x: e.clientX, y: e.clientY };
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging.current) return;
+    const dx = e.clientX - last.current.x;
+    const dy = e.clientY - last.current.y;
+    last.current = { x: e.clientX, y: e.clientY };
+    setRot((r) => ({
+      x: Math.max(-60, Math.min(60, r.x - dy * 0.4)),
+      y: r.y + dx * 0.4,
+    }));
+  };
+  const stopDrag = () => {
+    dragging.current = false;
+  };
 
   return (
-    <section id="ip" className="overflow-hidden border-t border-white/15 px-6 py-32 md:py-48">
+    <section id="ip" className="border-t border-white/15 px-6 py-32 md:py-48">
       <p className="text-center text-xs font-bold tracking-[0.5em] uppercase text-white/40">
         04 / IP
       </p>
@@ -165,76 +91,54 @@ export default function IPSection() {
         IP DESIGN
       </motion.h2>
 
-      {/* Orbit stage */}
+      {/* Stage */}
       <div
-        ref={containerRef}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={stopDrag}
-        onPointerCancel={stopDrag}
-        onPointerLeave={() => {
-          stopDrag();
-          setHovered(null);
-        }}
-        className="relative mx-auto mt-12 h-[520px] w-full max-w-[1400px] cursor-grab touch-pan-y select-none active:cursor-grabbing md:h-[720px]"
+        className="relative mx-auto mt-16 h-[100vh] w-full max-w-[1400px]"
         style={{ perspective: "1200px" }}
+        onMouseLeave={() => setHovered(null)}
       >
-        {/* Orbit ring */}
-        <div
-          className="absolute left-1/2 top-1/2"
-          style={{ transformStyle: "preserve-3d", transform: `rotateX(${TILT}deg)` }}
-        >
-          {works.map((w, i) => {
-            const a = angle + i * step;
-            const rad = (a * Math.PI) / 180;
-            const depth = Math.cos(rad); // 1 = near (front), -1 = far
-            const near = (depth + 1) / 2;
-            const isHovered = hovered === i;
-            const scale = isHovered ? 1.3 : 0.7 + near * 0.5;
-            const opacity = isHovered ? 1 : 0.4 + near * 0.6;
-            const blur = isHovered ? 0 : (1 - near) * 1.6;
-            return (
-              <motion.div
-                key={w.src}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, delay: i * 0.03, ease: "easeOut" }}
-                className="absolute"
+        {/* Scattered works */}
+        {works.map((w, i) => (
+          <motion.div
+            key={w.src}
+            className="absolute hidden md:block"
+            style={{ left: w.left, top: w.top, width: w.width }}
+            initial={{ opacity: 0, scale: 0.2, x: "-50%", y: "-50%" }}
+            whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+          >
+            <motion.button
+              animate={{ y: [0, -14, 0] }}
+              transition={{
+                duration: 6 + (i % 3),
+                delay: w.delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              onMouseEnter={() => setHovered(i)}
+              onClick={() => setLightbox(i)}
+              className="block w-full origin-center"
+            >
+              <img
+                src={w.src}
+                alt={w.title}
+                loading="lazy"
+                draggable={false}
+                className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
                 style={{
-                  width: cardW,
-                  marginLeft: -cardW / 2,
-                  transformStyle: "preserve-3d",
-                  transform: `rotateY(${a}deg) translateZ(${radius}px) ${
-                    isHovered ? "translateZ(50px)" : ""
-                  } rotateY(${-a}deg) rotateX(${-TILT}deg) scale(${scale})`,
-                  zIndex: Math.round(near * 100),
+                  transform: hovered === i ? "scale(1.15)" : "scale(1)",
+                  filter:
+                    hovered === null
+                      ? "brightness(1)"
+                      : hovered === i
+                        ? "brightness(1.25)"
+                        : "brightness(0.45)",
                 }}
-              >
-                <button
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
-                  onClick={() => setLightbox(i)}
-                  className="block w-full"
-                  style={{ opacity, filter: `blur(${blur}px)` }}
-                >
-                  <img
-                    src={w.src}
-                    alt={w.title}
-                    loading="lazy"
-                    draggable={false}
-                    className="block h-auto w-full select-none rounded-[12px] object-contain"
-                  />
-                  {isHovered && (
-                    <span className="mt-2 block whitespace-nowrap text-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/80">
-                      {w.title}
-                    </span>
-                  )}
-                </button>
-              </motion.div>
-            );
-          })}
-        </div>
+              />
+            </motion.button>
+          </motion.div>
+        ))}
 
         {/* Center IP */}
         <motion.div
@@ -242,22 +146,56 @@ export default function IPSection() {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: "backOut" }}
-          className="pointer-events-none absolute left-1/2 top-1/2 z-[60] w-[220px] -translate-x-1/2 -translate-y-1/2 md:w-[320px]"
+          className="absolute left-1/2 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2 md:w-[380px]"
+          style={{ transformStyle: "preserve-3d" }}
         >
-          <motion.img
+          <motion.div
             animate={{ y: [0, -18, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            src={ipMain.url}
-            alt="TINY FROG IP"
-            draggable={false}
-            className="block h-auto w-full select-none rounded-[20px] object-contain"
-          />
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={stopDrag}
+              onPointerCancel={stopDrag}
+              onWheel={(e) =>
+                setScale((s) => Math.max(0.5, Math.min(2, s - e.deltaY * 0.001)))
+              }
+              className="cursor-grab touch-none select-none active:cursor-grabbing"
+              style={{
+                transformStyle: "preserve-3d",
+                transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg) scale(${scale})`,
+                transition: dragging.current ? "none" : "transform 0.2s ease-out",
+              }}
+            >
+              <img
+                src={ipMain.url}
+                alt="TINY FROG IP"
+                draggable={false}
+                className="block h-auto w-full select-none rounded-[20px] object-contain"
+              />
+            </div>
+          </motion.div>
+          <p className="mt-6 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-white/40">
+            HOVER TO PREVIEW · CLICK TO VIEW
+          </p>
         </motion.div>
-      </div>
 
-      <p className="mt-10 text-center text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-        SCROLL TO SPEED UP · DRAG TO ROTATE · CLICK TO VIEW
-      </p>
+        {/* Mobile fallback grid */}
+        <div className="absolute inset-x-0 bottom-0 grid grid-cols-2 gap-4 md:hidden">
+          {works.map((w, i) => (
+            <button key={w.src} onClick={() => setLightbox(i)}>
+              <img
+                src={w.src}
+                alt={w.title}
+                loading="lazy"
+                className="block h-auto w-full rounded-[16px] object-contain"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Lightbox */}
       <AnimatePresence>
