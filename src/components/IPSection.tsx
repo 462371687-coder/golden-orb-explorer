@@ -111,45 +111,60 @@ export default function IPSection() {
       >
         {/* Scattered works */}
         {works.map((w, i) => (
-          <motion.div
+          <div
             key={w.src}
-            className="absolute hidden md:block"
-            style={{ left: w.left, top: w.top, width: w.width }}
-            initial={{ opacity: 0, scale: 0.2, x: "-50%", y: "-50%" }}
-            whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+            className="pointer-events-none absolute inset-0 hidden md:block"
+            style={{
+              animation: `orbit-spin ${ORBIT_DURATION}s linear infinite`,
+              animationPlayState: hovered === i ? "paused" : "running",
+            }}
           >
-            <motion.button
-              animate={{ y: [0, -14, 0] }}
-              transition={{
-                duration: 6 + (i % 3),
-                delay: w.delay,
-                repeat: Infinity,
-                ease: "easeInOut",
+            <motion.div
+              className="pointer-events-auto absolute"
+              style={{
+                left: w.left,
+                top: w.top,
+                width: w.width,
+                animation: `counter-spin ${ORBIT_DURATION}s linear infinite`,
+                animationPlayState: hovered === i ? "paused" : "running",
               }}
-              onMouseEnter={() => setHovered(i)}
-              onClick={() => setLightbox(i)}
-              className="block w-full origin-center"
+              initial={{ opacity: 0, scale: 0.2 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
             >
-              <img
-                src={w.src}
-                alt={w.title}
-                loading="lazy"
-                draggable={false}
-                className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
-                style={{
-                  transform: hovered === i ? "scale(1.15)" : "scale(1)",
-                  filter:
-                    hovered === null
-                      ? "brightness(1)"
-                      : hovered === i
-                        ? "brightness(1.25)"
-                        : "brightness(0.45)",
+              <motion.button
+                animate={{ y: [0, -14, 0] }}
+                transition={{
+                  duration: 6 + (i % 3),
+                  delay: w.delay,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
-              />
-            </motion.button>
-          </motion.div>
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => setLightbox(i)}
+                className="block w-full origin-center"
+              >
+                <img
+                  src={w.src}
+                  alt={w.title}
+                  loading="lazy"
+                  draggable={false}
+                  className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
+                  style={{
+                    transform: hovered === i ? "scale(1.15)" : "scale(1)",
+                    filter:
+                      hovered === null
+                        ? "brightness(1)"
+                        : hovered === i
+                          ? "brightness(1.25)"
+                          : "brightness(0.45)",
+                  }}
+                />
+              </motion.button>
+            </motion.div>
+          </div>
         ))}
 
         {/* Center IP */}
