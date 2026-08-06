@@ -13,6 +13,11 @@ import ip15 from "@/assets/ip/ip-15.jpg.asset.json";
 import ip16 from "@/assets/ip/ip-16.jpg.asset.json";
 import ip17 from "@/assets/ip/ip-17.jpg.asset.json";
 import ip18 from "@/assets/ip/ip-18.jpg.asset.json";
+import ip08 from "@/assets/ip/ip-08.jpg.asset.json";
+import ip09 from "@/assets/ip/ip-09.jpg.asset.json";
+import ip10 from "@/assets/ip/ip-10.jpg.asset.json";
+import ip11 from "@/assets/ip/ip-11.jpg.asset.json";
+import ip12 from "@/assets/ip/ip-12.jpg.asset.json";
 
 type Work = {
   src: string;
@@ -35,7 +40,14 @@ const works: Work[] = [
   { src: ip18.url, title: "RAINY PLANET — 包装礼盒", left: "44%", top: "84%", width: 210, delay: 0.95 },
   { src: ip5.url, title: "吊卡 & 半调延展", left: "26%", top: "86%", width: 170, delay: 0.5 },
   { src: ip4.url, title: "IP 场景应用", left: "78%", top: "80%", width: 165, delay: 1.35 },
+  { src: ip08.url, title: "TINY FROG — 夏日泳圈", left: "36%", top: "2%", width: 185, delay: 0.3 },
+  { src: ip09.url, title: "TINY FROG — 云端彩虹", left: "90%", top: "18%", width: 175, delay: 0.85 },
+  { src: ip10.url, title: "TINY FROG — 草地野餐", left: "10%", top: "20%", width: 180, delay: 1.05 },
+  { src: ip11.url, title: "TINY FROG — 雨天咖啡", left: "58%", top: "68%", width: 190, delay: 0.65 },
+  { src: ip12.url, title: "TINY FROG — 雨林探索", left: "14%", top: "54%", width: 180, delay: 1.25 },
 ];
+
+const ORBIT_DURATION = 25;
 
 export default function IPSection() {
   const [rot, setRot] = useState({ x: 0, y: 0 });
@@ -99,45 +111,60 @@ export default function IPSection() {
       >
         {/* Scattered works */}
         {works.map((w, i) => (
-          <motion.div
+          <div
             key={w.src}
-            className="absolute hidden md:block"
-            style={{ left: w.left, top: w.top, width: w.width }}
-            initial={{ opacity: 0, scale: 0.2, x: "-50%", y: "-50%" }}
-            whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+            className="pointer-events-none absolute inset-0 hidden md:block"
+            style={{
+              animation: `orbit-spin ${ORBIT_DURATION}s linear infinite`,
+              animationPlayState: hovered === i ? "paused" : "running",
+            }}
           >
-            <motion.button
-              animate={{ y: [0, -14, 0] }}
-              transition={{
-                duration: 6 + (i % 3),
-                delay: w.delay,
-                repeat: Infinity,
-                ease: "easeInOut",
+            <motion.div
+              className="pointer-events-auto absolute"
+              style={{
+                left: w.left,
+                top: w.top,
+                width: w.width,
+                animation: `counter-spin ${ORBIT_DURATION}s linear infinite`,
+                animationPlayState: hovered === i ? "paused" : "running",
               }}
-              onMouseEnter={() => setHovered(i)}
-              onClick={() => setLightbox(i)}
-              className="block w-full origin-center"
+              initial={{ opacity: 0, scale: 0.2 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
             >
-              <img
-                src={w.src}
-                alt={w.title}
-                loading="lazy"
-                draggable={false}
-                className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
-                style={{
-                  transform: hovered === i ? "scale(1.15)" : "scale(1)",
-                  filter:
-                    hovered === null
-                      ? "brightness(1)"
-                      : hovered === i
-                        ? "brightness(1.25)"
-                        : "brightness(0.45)",
+              <motion.button
+                animate={{ y: [0, -14, 0] }}
+                transition={{
+                  duration: 6 + (i % 3),
+                  delay: w.delay,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
-              />
-            </motion.button>
-          </motion.div>
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => setLightbox(i)}
+                className="block w-full origin-center"
+              >
+                <img
+                  src={w.src}
+                  alt={w.title}
+                  loading="lazy"
+                  draggable={false}
+                  className="block h-auto w-full select-none rounded-[14px] object-contain transition-all duration-300"
+                  style={{
+                    transform: hovered === i ? "scale(1.15)" : "scale(1)",
+                    filter:
+                      hovered === null
+                        ? "brightness(1)"
+                        : hovered === i
+                          ? "brightness(1.25)"
+                          : "brightness(0.45)",
+                  }}
+                />
+              </motion.button>
+            </motion.div>
+          </div>
         ))}
 
         {/* Center IP */}
