@@ -477,6 +477,24 @@ function ProjectDetail({
               loading="lazy"
             />
           ))}
+          {project.placeholders?.map((label) => (
+            <div
+              key={label}
+              className="flex aspect-[16/9] w-full items-center justify-center rounded-[20px] bg-[#333]"
+            >
+              <span className="text-sm tracking-[0.3em] text-white/50">
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {project.heroPlaceholder && (
+        <div className="flex aspect-[16/7] w-full items-center justify-center rounded-[20px] bg-[#333]">
+          <span className="text-sm tracking-[0.4em] text-white/50">
+            {project.heroPlaceholder}
+          </span>
         </div>
       )}
 

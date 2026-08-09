@@ -74,6 +74,13 @@ const cards: Card[] = [
     content: () => <AboutSection />,
   },
   {
+    id: "alma",
+    en: "ALMA PET",
+    zh: "宠物服饰品牌",
+    cover: coverAlma.url,
+    content: () => <BrandSection only="alma" />,
+  },
+  {
     id: "chicha",
     en: "QICHA",
     zh: "栖茶",
