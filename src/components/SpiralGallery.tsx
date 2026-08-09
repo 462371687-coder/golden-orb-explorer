@@ -17,6 +17,7 @@ import CarouselSection from "@/components/CarouselSection";
 
 import coverAbout from "@/assets/covers/cover-about.jpg.asset.json";
 import coverChicha from "@/assets/covers/cover-chicha.png.asset.json";
+import coverAlma from "@/assets/alma/alma-01.png.asset.json";
 import coverBello from "@/assets/covers/cover-bello.png.asset.json";
 import coverPoster from "@/assets/covers/cover-poster.jpg.asset.json";
 import coverType from "@/assets/covers/cover-type.jpg.asset.json";
