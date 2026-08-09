@@ -21,6 +21,16 @@ import b6 from "@/assets/bello/06._jpg.jpg.asset.json";
 import b7 from "@/assets/bello/07._jpg.jpg.asset.json";
 import b8 from "@/assets/bello/08._jpg.jpg.asset.json";
 import b9 from "@/assets/bello/09._jpg.jpg.asset.json";
+import a1 from "@/assets/alma/alma-01.png.asset.json";
+import a2 from "@/assets/alma/alma-02.jpg.asset.json";
+import a3 from "@/assets/alma/alma-03.jpg.asset.json";
+import a4 from "@/assets/alma/alma-04.jpg.asset.json";
+import a5 from "@/assets/alma/alma-05.jpg.asset.json";
+import a6 from "@/assets/alma/alma-06.jpg.asset.json";
+import a7 from "@/assets/alma/alma-07.jpg.asset.json";
+import a8 from "@/assets/alma/alma-08.jpg.asset.json";
+import a9 from "@/assets/alma/alma-09.jpg.asset.json";
+import a10 from "@/assets/alma/alma-10.jpg.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -47,13 +57,59 @@ type Project = {
   slogans: string[];
   sections: { title: string; items: Item[] }[];
   gallery?: { src: string; alt: string }[];
+  placeholders?: string[];
+  heroPlaceholder?: string;
   minimal?: boolean;
   cover: { bg: string; accent: string; sub: string; img: string };
 };
 
+const alma: Project = {
+  id: "alma",
+  code: "BRAND · 01",
+  name: "ALMA PET",
+  nameEn: "ALMA PET",
+  tagline: "为爱宠提供兼具舒适性与设计感的高品质服饰",
+  positioning: "理性 · 温暖 · 极简",
+  story:
+    "ALMA PET 是一个专注于高品质宠物穿搭的现代宠物服饰品牌，面向追求品质生活与设计审美的现代养宠人群。品牌以舒适穿着、自由活动与简约设计为核心，重新思考宠物服饰在功能与美感之间的平衡，为宠物提供更加舒适自在的穿着体验，也为现代养宠生活带来更具品质感的穿搭选择。",
+  keywords: ["#理性", "#温暖", "#极简"],
+  value: "重新定义人宠关系与宠物服装，尊重宠物的身体感受和养宠人的生活审美。",
+  colors: [
+    { name: "浅灰", hex: "#e0e0e0" },
+    { name: "墨黑", hex: "#191919" },
+    { name: "纯白", hex: "#ffffff" },
+    { name: "可可棕", hex: "#513228" },
+    { name: "晴空蓝", hex: "#d9ebfa" },
+    { name: "暖奶黄", hex: "#fbe5b6" },
+  ],
+  fonts: "阿里巴巴普惠体 · Montserrat",
+  slogans: ["自在行动 Comfort in Motion.", "自在穿着 Wear with Ease."],
+  sections: [],
+  gallery: [
+    { src: a1.url, alt: "ALMA PET 品牌封面" },
+    { src: a2.url, alt: "ALMA PET 品牌价值三角" },
+    { src: a3.url, alt: "ALMA PET 品牌海报与 Logo 尺码延展" },
+    { src: a4.url, alt: "ALMA PET 四季系列标识与产品卡" },
+    { src: a5.url, alt: "ALMA PET 品牌情绪页" },
+    { src: a6.url, alt: "ALMA PET 色彩系统与字体规范" },
+    { src: a7.url, alt: "ALMA PET 品牌物料与包装" },
+    { src: a8.url, alt: "ALMA PET 包装盒与吊牌" },
+    { src: a9.url, alt: "ALMA PET 小程序 UI 与卡片延展" },
+    { src: a10.url, alt: "ALMA PET 门店与场景延展" },
+  ],
+  placeholders: ["占位 11", "占位 12"],
+  heroPlaceholder: "品牌主视觉",
+  cover: {
+    bg: "linear-gradient(135deg,#191919 0%,#513228 60%,#e0e0e0 100%)",
+    accent: "#fbe5b6",
+    sub: "自在行动　自在穿着",
+    img: a1.url,
+  },
+};
+
 const chicha: Project = {
   id: "chicha",
-  code: "BRAND · 01",
+  code: "BRAND · 02",
   name: "栖茶",
   nameEn: "CHICHA",
   tagline: "新中式茶饮品牌 · 都市驿站",
@@ -99,7 +155,7 @@ const chicha: Project = {
 
 const bello: Project = {
   id: "bello",
-  code: "BRAND · 02",
+  code: "BRAND · 03",
   name: "贝力",
   nameEn: "BELLO",
   tagline: "儿童辅食餐厅 · 0–3 岁阶段化喂养",
@@ -144,17 +200,17 @@ const bello: Project = {
   },
 };
 
-const projects: Project[] = [chicha, bello];
+const projects: Project[] = [alma, chicha, bello];
 
 export default function BrandSection({
   only,
 }: {
-  only?: "chicha" | "bello";
+  only?: "alma" | "chicha" | "bello";
 }) {
   const [active, setActive] = useState<Project | null>(null);
 
   if (only) {
-    const p = only === "chicha" ? chicha : bello;
+    const p = only === "alma" ? alma : only === "chicha" ? chicha : bello;
     return (
       <section className="mx-auto max-w-6xl px-6 py-24">
         <ProjectDetail project={p} standalone />
@@ -421,6 +477,24 @@ function ProjectDetail({
               loading="lazy"
             />
           ))}
+          {project.placeholders?.map((label) => (
+            <div
+              key={label}
+              className="flex aspect-[16/9] w-full items-center justify-center rounded-[20px] bg-[#333]"
+            >
+              <span className="text-sm tracking-[0.3em] text-white/50">
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {project.heroPlaceholder && (
+        <div className="flex aspect-[16/7] w-full items-center justify-center rounded-[20px] bg-[#333]">
+          <span className="text-sm tracking-[0.4em] text-white/50">
+            {project.heroPlaceholder}
+          </span>
         </div>
       )}
 
