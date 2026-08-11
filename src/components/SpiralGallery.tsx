@@ -63,6 +63,7 @@ type Card = {
   en: string;
   zh: string;
   cover: string;
+  fill?: boolean;
   content: () => ReactElement;
 };
 
@@ -79,6 +80,7 @@ const cards: Card[] = [
     en: "ALMA PET",
     zh: "宠物服饰品牌",
     cover: coverAlma.url,
+    fill: true,
     content: () => <BrandSection only="alma" />,
   },
   {
@@ -380,13 +382,25 @@ export default function SpiralGallery() {
                 className="absolute left-0 top-0 w-[clamp(160px,50vw,200px)] cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-[clamp(220px,22vw,260px)] xl:w-[clamp(280px,20vw,320px)]"
                 style={{ opacity: 0, willChange: "transform, opacity, filter" }}
               >
-                <img
-                  src={c.cover}
-                  alt={`${c.en} — ${c.zh}`}
-                  draggable={false}
-                  loading="lazy"
-                  className="block h-auto max-h-[400px] w-full max-w-full select-none rounded-[20px] bg-black object-contain"
-                />
+                {c.fill ? (
+                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-black">
+                    <img
+                      src={c.cover}
+                      alt={`${c.en} — ${c.zh}`}
+                      draggable={false}
+                      loading="lazy"
+                      className="block h-full w-full select-none object-cover"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={c.cover}
+                    alt={`${c.en} — ${c.zh}`}
+                    draggable={false}
+                    loading="lazy"
+                    className="block h-auto max-h-[400px] w-full max-w-full select-none rounded-[20px] bg-black object-contain"
+                  />
+                )}
                 {hovered === i && (
                   <div className="absolute inset-x-0 bottom-0 bg-black/70 px-4 py-3 text-center">
                     <p className="text-[10px] font-bold uppercase tracking-[0.35em]">

@@ -31,6 +31,7 @@ import a7 from "@/assets/alma/alma-07.jpg.asset.json";
 import a8 from "@/assets/alma/alma-08.jpg.asset.json";
 import a9 from "@/assets/alma/alma-09.jpg.asset.json";
 import a10 from "@/assets/alma/alma-10.jpg.asset.json";
+import a11 from "@/assets/alma/alma-11.jpg.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -68,7 +69,7 @@ const alma: Project = {
   code: "BRAND · 01",
   name: "ALMA PET",
   nameEn: "ALMA PET",
-  tagline: "为爱宠提供兼具舒适性与设计感的高品质服饰",
+  tagline: "ALMA PET 为爱宠提供兼具舒适性与设计感的高品质服饰",
   positioning: "理性 · 温暖 · 极简",
   story:
     "ALMA PET 是一个专注于高品质宠物穿搭的现代宠物服饰品牌，面向追求品质生活与设计审美的现代养宠人群。品牌以舒适穿着、自由活动与简约设计为核心，重新思考宠物服饰在功能与美感之间的平衡，为宠物提供更加舒适自在的穿着体验，也为现代养宠生活带来更具品质感的穿搭选择。",
@@ -96,9 +97,8 @@ const alma: Project = {
     { src: a8.url, alt: "ALMA PET 包装盒与吊牌" },
     { src: a9.url, alt: "ALMA PET 小程序 UI 与卡片延展" },
     { src: a10.url, alt: "ALMA PET 门店与场景延展" },
+    { src: a11.url, alt: "ALMA PET 门店主视觉" },
   ],
-  placeholders: ["占位 11", "占位 12"],
-  heroPlaceholder: "品牌主视觉",
   cover: {
     bg: "linear-gradient(135deg,#191919 0%,#513228 60%,#e0e0e0 100%)",
     accent: "#fbe5b6",
